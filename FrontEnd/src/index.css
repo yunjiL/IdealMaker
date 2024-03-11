@@ -2,21 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-html{
-  display: flex;
-  justify-content: center;
-
-}
-
 body{
-  width: 40%;
+  margin: 0;
 }
 
 #root {
-  padding: 16px 16px 16px 16px;
-  height: 100%;
-}
-
-@media (max-width: 768px){
-  width:100%;
+  background: white;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
