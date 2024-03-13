@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client'
-import App from './routes/App/App.tsx'
+import App from './routes/app/App.tsx'
 import './index.css'
 import {BrowserRouter} from "react-router-dom";
 

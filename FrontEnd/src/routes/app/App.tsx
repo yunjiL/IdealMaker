@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import {Route, Routes} from "react-router-dom";
-import Main from "../Main/index.tsx";
+import Main from "../main/index.tsx";
 
 
 const Container = styled.div`
