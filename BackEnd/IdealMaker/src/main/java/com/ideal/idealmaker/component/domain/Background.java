@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 public class Background {
 
 	@Id
+	@Column(name = "background_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 

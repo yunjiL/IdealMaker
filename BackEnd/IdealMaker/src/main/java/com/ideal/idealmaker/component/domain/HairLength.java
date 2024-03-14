@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 public class HairLength {
 
 	@Id
+	@Column(name = "hair_length_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 

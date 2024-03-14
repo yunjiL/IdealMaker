@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 public class ClothStyle {
 
 	@Id
+	@Column(name = "cloth_style_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 

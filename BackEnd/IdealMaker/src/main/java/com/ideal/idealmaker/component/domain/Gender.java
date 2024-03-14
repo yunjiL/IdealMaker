@@ -13,7 +13,9 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Gender {
+
 	@Id
+	@Column(name = "gender_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 

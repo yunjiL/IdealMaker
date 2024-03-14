@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 public class EyeStyle {
 
 	@Id
+	@Column(name = "eye_style_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 

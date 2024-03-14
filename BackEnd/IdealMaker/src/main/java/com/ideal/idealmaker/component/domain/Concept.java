@@ -17,6 +17,7 @@ import lombok.NoArgsConstructor;
 public class Concept {
 
 	@Id
+	@Column(name = "concept_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 

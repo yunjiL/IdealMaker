@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 public class Face {
 
 	@Id
+	@Column(name = "face_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
