@@ -37,8 +37,8 @@ const IdealResult = () => {
                 <button className="bg-bluegray p-2 rounded-2xl shadow-custom-outer active:scale-75 duration-300 hover:bg-[#AEC1E0]">더 많은 이상형 보러가기 &gt;&gt;</button>
             </div>
 
-            <div className="flex justify-center mb-[6%]">
-                <button className="bg-bluegray p-2 rounded-2xl shadow-custom-outer active:scale-75 duration-300 hover:bg-[#AEC1E0]"
+            <div className="flex justify-center mb-[8%]">
+                <button className="bg-lightpink p-2 rounded-2xl shadow-custom-outer active:scale-75 duration-300 hover:bg-[#F798A5]"
                         onClick={report}
                 >사진이 이상해요</button>
             </div>
