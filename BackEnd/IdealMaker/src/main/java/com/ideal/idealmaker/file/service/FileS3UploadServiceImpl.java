@@ -26,6 +26,10 @@ import software.amazon.awssdk.services.s3.model.ListObjectsV2Response;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 import software.amazon.awssdk.services.s3.model.S3Object;
 
+import java.io.InputStream;
+import java.net.URL;
+import java.net.HttpURLConnection;
+
 
 @Service
 @RequiredArgsConstructor
@@ -83,7 +87,6 @@ public class FileS3UploadServiceImpl implements FileS3UploadService {
                 .key(generatedName)
                 .contentType(getContentType(ext))
                 .build();
-
 
         try {
             s3Client.putObject(putObjectRequest, RequestBody.fromBytes(multipartFile.getBytes()));
@@ -165,5 +168,44 @@ public class FileS3UploadServiceImpl implements FileS3UploadService {
                 .build();
 
         return s3Client.listObjectsV2(listObjectsRequest);
+    }
+
+    /**
+     * 이미지 url을 s3 버킷에 업로드
+     * 
+     * @param keyName
+     * @param imageUrl
+     * @return
+     */
+    @Override
+    public FileInfoDto uploadImageURL(String keyName, String imageUrl) {
+
+        try {
+            // 외부 이미지 URL에서 InputStream 생성
+            URL url = new URL(imageUrl);
+            HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+            connection.setRequestProperty("User-Agent", "Mozilla/5.0");
+            InputStream inputStream = connection.getInputStream();
+
+            // S3에 이미지 업로드
+            PutObjectRequest putObjectRequest = PutObjectRequest.builder()
+                .bucket(bucketName)
+                .key(keyName)
+                .build();
+
+            s3Client.putObject(putObjectRequest,
+                RequestBody.fromInputStream(inputStream, connection.getContentLengthLong()));
+
+            // 리소스 해제
+            inputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        String fileURL = s3Client.utilities().getUrl(GetUrlRequest.builder().bucket(bucketName).key(keyName).build()).toExternalForm();
+        return FileInfoDto.builder()
+            .fileName(keyName)
+            .fileURL(fileURL)
+            .build();
     }
 }

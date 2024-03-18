@@ -17,4 +17,6 @@ public interface FileS3UploadService {
     void removeFile(String fileName);
 
     public void removeFolderFiles(String uploadPath);
+
+    FileInfoDto uploadImageURL(String keyName, String imageUrl);
 }
