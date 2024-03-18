@@ -1,11 +1,11 @@
 import example from "@/assets/images/react.svg"
 import dog from "@/assets/images/dog.webp"
 import fox from "@/assets/images/fox.webp"
-import ReportModal from "../../components/modals/ReportModal.tsx";
+import ReportModal from "../../components/modals/report/ReportModal.tsx";
 
 const IdealResult = () => {
     const report = () => {
-        (document.getElementById('my_modal_1') as HTMLDialogElement).showModal()
+        (document.getElementById('reportModal') as HTMLDialogElement).showModal()
     }
 
     return (
@@ -22,14 +22,14 @@ const IdealResult = () => {
                 <p className="text-center text-2xl mb-[6%]">이상형은 어떤 동물상일까요?</p>
             </div>
 
-            <div className="flex mb-[6%]">
-                <div>
-                    <img src={dog} alt={"dog"} className={"w-[50%] rounded-full mx-auto mb-[3%]"}/>
+            <div className="flex justify-evenly mb-[6%]">
+                <div className="flex flex-col w-[35%]">
+                    <img src={dog} alt={"dog"} className={"w-[100%] rounded-full mx-auto mb-[3%]"}/>
                     <p className="text-xl text-center">1위 강아지상</p>
                 </div>
-                <div className={"flex flex-col-reverse"}>
+                <div className="flex flex-col w-[35%]">
+                    <img src={fox} alt={"fox"} className={"w-[100%] rounded-full mx-auto mb-[3%]"}/>
                     <p className="text-xl text-center">2위 여우상</p>
-                    <img src={fox} alt={"fox"} className={"bottom-0 w-[40%] rounded-full mx-auto mb-[3%]"}/>
                 </div>
             </div>
 
