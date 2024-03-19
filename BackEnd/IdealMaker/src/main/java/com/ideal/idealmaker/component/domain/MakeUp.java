@@ -22,4 +22,7 @@ public class MakeUp {
 	@Column(nullable = false)
 	private String makeUp;
 
+	@Column(nullable = false)
+	private String eng;
+
 }

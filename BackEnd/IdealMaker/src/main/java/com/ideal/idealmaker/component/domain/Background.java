@@ -24,4 +24,7 @@ public class Background {
 
 	@Column(nullable = false)
 	private String brightness;
+
+	@Column(nullable = false)
+	private String eng;
 }

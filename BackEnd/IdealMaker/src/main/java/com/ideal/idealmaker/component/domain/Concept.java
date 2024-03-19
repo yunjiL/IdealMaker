@@ -30,4 +30,7 @@ public class Concept {
 
 	@Column(nullable = false)
 	private String concept;
+
+	@Column(nullable = false)
+	private String eng;
 }

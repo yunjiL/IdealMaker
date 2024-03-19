@@ -21,4 +21,7 @@ public class EyeStyle {
 
 	@Column(nullable = false)
 	private String eyeStyle;
+
+	@Column(nullable = false)
+	private String eng;
 }

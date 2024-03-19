@@ -21,4 +21,7 @@ public class SkinColor {
 
 	private String skinColor;
 
+	@Column(nullable = false)
+	private String eng;
+
 }

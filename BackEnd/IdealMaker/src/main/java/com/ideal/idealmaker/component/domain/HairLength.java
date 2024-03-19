@@ -21,4 +21,7 @@ public class HairLength {
 
 	@Column(nullable = false)
 	private String hairLength;
+
+	@Column(nullable = false)
+	private String eng;
 }

@@ -21,5 +21,5 @@ public class IdealAnimalTypeId implements Serializable {
 	private Long idealId;
 
 	@Column(name = "animal_type_id")
-	private Long animalTypeId;
+	private Integer animalTypeId;
 }

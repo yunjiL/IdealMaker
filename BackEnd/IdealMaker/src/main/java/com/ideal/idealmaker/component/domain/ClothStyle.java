@@ -21,4 +21,7 @@ public class ClothStyle {
 
 	@Column(nullable = false)
 	private String clothStyle;
+
+	@Column(nullable = false)
+	private String eng;
 }
