@@ -67,8 +67,8 @@ public class IdealCharacter {
 	@JoinColumn(name = "eye_style_id")
 	private EyeStyle eyeStyle;
 
-	@JoinColumn(name = "ha\n"
-		+ "\t@ManyToOne(fetch = FetchType.LAZY)ir_style_id")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "hair_style_id")
 	private HairStyle hairStyle;
 
 	@ManyToOne(fetch = FetchType.LAZY)

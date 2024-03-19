@@ -27,4 +27,6 @@ public class AnimalType {
 
 	private LocalDate updatedAt;
 
+	private String typeURL;
+
 }
