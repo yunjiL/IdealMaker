@@ -19,7 +19,7 @@ public class Ideal {
 	@Id
 	@Column(name = "ideal_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 
 	private String idelURL;
 

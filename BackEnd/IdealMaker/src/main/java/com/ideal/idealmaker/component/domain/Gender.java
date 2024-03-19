@@ -21,4 +21,7 @@ public class Gender {
 
 	@Column(nullable = false)
 	private String gender;
+
+	@Column(nullable = false)
+	private String eng;
 }

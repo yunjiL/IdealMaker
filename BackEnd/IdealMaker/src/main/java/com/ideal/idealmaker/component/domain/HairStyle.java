@@ -29,4 +29,7 @@ public class HairStyle {
 	@Column(nullable = false)
 	private String hairStyle;
 
+	@Column(nullable = false)
+	private String eng;
+
 }

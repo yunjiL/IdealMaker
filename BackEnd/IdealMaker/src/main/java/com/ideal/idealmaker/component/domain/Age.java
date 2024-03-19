@@ -21,4 +21,7 @@ public class Age {
 
 	@Column(nullable = false)
 	private Integer age;
+
+	@Column(nullable = false)
+	private String eng;
 }

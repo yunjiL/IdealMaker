@@ -22,4 +22,7 @@ public class Face {
 	@Column(nullable = false)
 	private String face;
 
+	@Column(nullable = false)
+	private String eng;
+
 }
