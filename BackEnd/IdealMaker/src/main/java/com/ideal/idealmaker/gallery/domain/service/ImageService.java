@@ -24,12 +24,12 @@ public class ImageService {
     }
 
     //이미지 상세 조회 (idealId)
-    public Optional<Image> findImageById(Long idealId){
-        return imageRepository.findById(idealId);
+    public Image findImageById(Long idealId) {
+        return imageRepository.findById(idealId).orElse(null);
     }
 
     //동물상 필터링 검색 (선택하면 그 페이지에 해당 동물상만 나오게)
-    public Page<Image> findImageByAniamlType(String animalType, Pageable pageable) {
+    public Page<Image> findByAnimalType(String animalType, Pageable pageable) {
         return imageRepository.findByAnimalType(animalType, pageable);
     }
 }
