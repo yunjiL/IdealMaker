@@ -2,6 +2,7 @@ package com.ideal.idealmaker.gallery.domain.service;
 
 import com.ideal.idealmaker.gallery.domain.model.Image;
 import com.ideal.idealmaker.gallery.domain.repository.ImageRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -25,7 +26,8 @@ public class ImageServiceImpl implements ImageService {
     //이미지 상세 조회 (idealId)
     @Override
     public Image findImageById(Long idealId) {
-        return imageRepository.findById(idealId).orElse(null);
+        return imageRepository.findById(idealId)
+                .orElseThrow(() -> new EntityNotFoundException("Image not found with id: " + idealId));
     }
 
     //동물상 필터링 검색 (선택하면 그 페이지에 해당 동물상만 나오게)

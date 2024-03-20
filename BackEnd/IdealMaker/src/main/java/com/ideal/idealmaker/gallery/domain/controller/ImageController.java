@@ -11,10 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
 
-@Controller
+@RestController
 public class ImageController {
     private final ImageService imageService;
 
@@ -43,7 +44,7 @@ public class ImageController {
     }
 
     //동물상 필터링 검색
-    @GetMapping("/serch")
+    @GetMapping("/search")
     public ResponseEntity<Page<Image>> findByAnimalType(
             @RequestParam String animalType,
             Pageable pageable) {
@@ -51,5 +52,5 @@ public class ImageController {
         return ResponseEntity.ok(images);
     }
 
-    //페이지네이션
+
 }

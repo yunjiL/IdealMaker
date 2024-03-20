@@ -6,9 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Getter;
-import org.springframework.boot.autoconfigure.web.WebProperties;
 
-import java.lang.annotation.Documented;
 
 @Entity
 @Getter
