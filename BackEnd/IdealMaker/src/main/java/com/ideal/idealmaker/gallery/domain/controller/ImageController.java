@@ -27,7 +27,7 @@ public class ImageController {
     //이미지 전체 조회
     @GetMapping
     public ResponseEntity<Page<Image>> getAllImages(Pageable pageable) {
-        Page<Image> images = imageService.findAllImage(pageable);
+        Page<Image> images = imageService.findAllImages(pageable);
         return ResponseEntity.ok(images);
     }
 
