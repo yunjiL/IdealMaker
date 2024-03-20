@@ -1,7 +1,10 @@
 package com.ideal.idealmaker.survey.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
+import com.ideal.idealmaker.component.domain.*;
 import com.ideal.idealmaker.survey.dto.SurveyConceptListDto;
 import com.ideal.idealmaker.survey.repository.AgeRepository;
 import com.ideal.idealmaker.survey.repository.BackgroundRepository;
@@ -33,6 +36,9 @@ public class SurveyServiceImpl implements SurveyService {
 	private final SkinColorRepository skinColorRepository;
 
 	public SurveyConceptListDto readSurveyConceptList(String gender) {
+
+		List<Age> ageList = ageRepository.findAll();
+
 
 		return null;
 	}
