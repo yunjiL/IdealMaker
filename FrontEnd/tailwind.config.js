@@ -9,6 +9,7 @@ export default {
       bluegray:'#CAD4E4'
       ,lightpink:'#FFC5CD'
       ,floralwhite:'#FFFAF0'
+      ,red:'#EC0200'
     },
     boxShadow: {
       'custom-inner': 'inset 0 5px 5px 2px rgba(0, 0, 0, 0.2)',

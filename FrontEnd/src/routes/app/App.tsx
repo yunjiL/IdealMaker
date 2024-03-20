@@ -2,7 +2,6 @@ import styled from "styled-components";
 import {Route, Routes} from "react-router-dom";
 import Main from "../main/index.tsx";
 
-
 const Container = styled.div`
   width: 40%;
   height: 100%;
