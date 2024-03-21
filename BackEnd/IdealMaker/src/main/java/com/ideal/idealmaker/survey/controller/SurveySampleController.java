@@ -20,6 +20,13 @@ import com.ideal.idealmaker.survey.service.SurveyService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+/*
+ * 	작성자 : 정여민
+ * 	작성 일시 : 2024.03.21
+ * 	업데이트 : 2024.03.21
+ *	네용 : 설문조사 임시용 컨트롤러
+ * */
+
 @Slf4j
 @RestController
 @RequestMapping("/api/survey")

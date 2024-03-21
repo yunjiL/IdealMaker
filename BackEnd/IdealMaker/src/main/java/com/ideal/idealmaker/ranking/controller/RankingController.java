@@ -7,12 +7,12 @@ import java.util.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ideal.idealmaker.survey.service.SurveyService;
+import com.ideal.idealmaker.ranking.data.RankingResponseDto;
+import com.ideal.idealmaker.ranking.service.RankingService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,18 +23,16 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class RankingController {
 
-	private final SurveyService surveyService;
+	private final RankingService rankingService;
 
-	@GetMapping("/")
+	@GetMapping()
 	@ResponseStatus(HttpStatus.OK)
-	public ResponseEntity<Map<String, Object>> getAnimalRanking(){
+	public ResponseEntity<Map<String, List<RankingResponseDto>>> getAnimalRanking(){
 
-		Map<String, Object> response = new HashMap<>();
+		Map<String, List<RankingResponseDto>> response = new HashMap<>();
+
+		response = rankingService.findAnimalRanking();
 
 		return ResponseEntity.ok(response);
 	}
-
-
-
-
 }
