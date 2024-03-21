@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/survey")
+@RequestMapping("/api/survey2")	// 임시로 API 주소 바꾸기 위해 썼습니다.
 @RequiredArgsConstructor
 public class SurveyController {
 

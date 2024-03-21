@@ -16,7 +16,7 @@ public class SurveyCustomListDto {
 	@Getter
 	@NoArgsConstructor
 	@AllArgsConstructor
-	@Builder
+	@SuperBuilder
 	public static class Custom {
 		private String type;
 
