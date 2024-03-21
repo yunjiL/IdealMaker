@@ -1,4 +1,4 @@
-package com.ideal.idealmaker.gallery.domain.controller;
+package com.ideal.idealmaker.gallery.controller;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;

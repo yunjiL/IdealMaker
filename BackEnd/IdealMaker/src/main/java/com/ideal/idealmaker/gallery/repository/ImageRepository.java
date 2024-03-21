@@ -1,4 +1,4 @@
-package com.ideal.idealmaker.gallery.domain.repository;
+package com.ideal.idealmaker.gallery.repository;
 
 import com.ideal.idealmaker.gallery.domain.model.Image;
 import org.springframework.data.domain.Page;
