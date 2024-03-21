@@ -13,10 +13,8 @@ export const getResultAPI = async (imageId:number) => {
 
 export const getFormAPI = async(surveyId:string, genderId:string)=>{
     try{
-        let url = `/survey/${surveyId}`;
-        if(surveyId==="custom"){
-            url+=`/${genderId}`;
-        }
+        const url = `/survey/${surveyId}/${genderId}`;
+
         const response = await axios.get(url)
         return response.data
 
@@ -24,7 +22,6 @@ export const getFormAPI = async(surveyId:string, genderId:string)=>{
         handleApiError('결과를 가져오는 중 오류 발생 ', error)
     }
 }
-
 
 // 에러 처리
 const handleApiError = (message:any, error:any) => {
