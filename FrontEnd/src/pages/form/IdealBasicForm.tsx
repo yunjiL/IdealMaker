@@ -1,6 +1,6 @@
 import { useState } from "react";
 import {useForm} from  "react-hook-form";
-import { Button, Label, Radio } from 'flowbite-react';
+import { Button } from 'flowbite-react';
 import { BasicForm } from "../../types/type";
 import { useNavigate } from "react-router-dom";
 
@@ -40,12 +40,9 @@ const IdealBasicForm = () => {
 
 
     const {
-        formState: {errors},
-        reset,
+        formState:
         handleSubmit,
         setValue,
-        setError,
-        setFocus
       } = useForm<BasicForm>({
         mode:"onSubmit",
         defaultValues:{
@@ -64,10 +61,7 @@ const IdealBasicForm = () => {
 
   return (
     <div className="flex">
-
         <form onSubmit={handleSubmit(handleRegistration)} className="w-full">
-
-
             {BasicFormData[nowIdx]  &&(
                 <>
                 <p className="font-bold text-xl my-10 text-center">{BasicFormData[nowIdx].question}</p>

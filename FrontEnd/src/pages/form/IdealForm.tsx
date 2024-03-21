@@ -19,18 +19,16 @@ const IdealForm = () => {
   useEffect(()=>{
     getFormAPI(surveyId,genderId).then((data)=>{
       console.log(data)
+      setSurveyList(data)
     });
   },[]);
 
 
 
   const {
-      formState: {errors},
-      reset,
+      formState:
       handleSubmit,
       setValue,
-      setError,
-      setFocus
     } = useForm<ConceptFormResult>({
       mode:"onSubmit",
       defaultValues:{
@@ -40,7 +38,9 @@ const IdealForm = () => {
     });
 
 
-  const handleRegistration=(data:ConceptFormResult)=>{
+  const handleRegistration=(
+      // data:ConceptFormResult
+  )=>{
       //axios 통신 넣기
 
       // axios.create({
@@ -63,13 +63,11 @@ const IdealForm = () => {
 
 return (
   <div className="flex">
-
       <form onSubmit={handleSubmit(handleRegistration)} className="w-full">
-
       {/* 설문조사 하나 시작 */}
       <p className="font-bold text-xl my-[5%] text-center"> 나이를 선택해주세요. </p>
       {
-        surveyList?.ageList.map((item, _idx)=>
+        surveyList?.ageList?.map((item)=>
         <Button 
         key={item.ageId}
         onClick={()=>{
@@ -93,7 +91,7 @@ return (
       {/* 설문조사 하나 시작 */}
       <p className="font-bold text-xl my-[5%] text-center"> 얼굴형을 선택해주세요. </p>
       {
-        surveyList?.faceShapeList.map((item, _idx)=>
+        surveyList?.faceShapeList?.map((item,)=>
         <Button 
         key={item.faceShapeId}
         onClick={()=>{
@@ -117,7 +115,7 @@ return (
       {/* 설문조사 하나 시작 */}
       <p className="font-bold text-xl my-[5%] text-center"> 피부색을 선택해주세요. </p>
       {
-        surveyList?.skinColorList.map((item, _idx)=>
+        surveyList?.skinColorList?.map((item, )=>
         <Button 
         key={item.skinColorId}
         onClick={()=>{
@@ -140,7 +138,7 @@ return (
       {/* 설문조사 하나 시작 */}
       <p className="font-bold text-xl my-[5%] text-center"> 눈 색을 선택해주세요. </p>
       {
-        surveyList?.eyeStyleList.map((item, _idx)=>
+        surveyList?.eyeStyleList?.map((item)=>
         <Button 
         key={item.eyeStyleId}
         onClick={()=>{
@@ -163,7 +161,7 @@ return (
       {/* 설문조사 하나 시작 */}
       <p className="font-bold text-xl my-[5%] text-center"> 컨셉을 선택해주세요. </p>
       {
-        surveyList?.conceptList.map((item, _idx)=>
+        surveyList?.conceptList?.map((item)=>
         <Button 
         key={item.conceptId}
         onClick={()=>{
