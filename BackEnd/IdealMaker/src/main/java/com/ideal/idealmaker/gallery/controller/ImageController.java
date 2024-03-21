@@ -24,7 +24,7 @@ public class ImageController {
 
 
     // 이미지 전체 조회
-    @GetMapping
+    @GetMapping("/api/gallery")
     public ResponseEntity<Page<ImageDTO>> getAllImages(Pageable pageable) {
         Page<Image> images = imageService.findAllImages(pageable);
         Page<ImageDTO> dtoPage = images.map(this::convertToDto);
@@ -32,7 +32,7 @@ public class ImageController {
     }
 
     // 이미지 상세 조회
-    @GetMapping("/{idealId}")
+    @GetMapping("/api/gallery/{idealId}")
     public ResponseEntity<ImageDTO> getImageById(@PathVariable Long idealId) {
         Image image = imageService.findImageById(idealId);
         if (image != null) {
@@ -44,7 +44,7 @@ public class ImageController {
     }
 
     // 동물상 필터링 검색
-    @GetMapping("/search")
+    @GetMapping("/api/gallery/search")
     public ResponseEntity<Page<ImageDTO>> findByAnimalType(@RequestParam String animalType, Pageable pageable) {
         Page<Image> images = imageService.findByAnimalType(animalType, pageable);
         Page<ImageDTO> dtoPage = images.map(this::convertToDto);
