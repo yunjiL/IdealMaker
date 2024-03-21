@@ -50,10 +50,10 @@ public class SurveySampleController {
 
 		// 얼굴 리스트 설정
 		List<Map<String, Object>> faceShapeList = new ArrayList<>();
-		Map<String, Object> face = new HashMap<>();
-		face.put("faceId", 1);
-		face.put("face", "갸름한 얼굴");
-		faceShapeList.add(face);
+		Map<String, Object> faceShape = new HashMap<>();
+		faceShape.put("faceShapeId", 1);
+		faceShape.put("faceShape", "갸름한 얼굴");
+		faceShapeList.add(faceShape);
 		response.put("faceShapeList",faceShapeList);
 
 		// 피부색 리스트 설정
@@ -146,10 +146,10 @@ public class SurveySampleController {
 
 		// 얼굴 리스트 설정
 		List<Map<String, Object>> faceShapeList = new ArrayList<>();
-		Map<String, Object> face = new HashMap<>();
-		face.put("faceId", 1);
-		face.put("face", "갸름한 얼굴");
-		faceShapeList.add(face);
+		Map<String, Object> faceShape = new HashMap<>();
+		faceShape.put("faceShapeId", 1);
+		faceShape.put("faceShape", "갸름한 얼굴");
+		faceShapeList.add(faceShape);
 		response.put("faceShapeList",faceShapeList);
 
 		// 피부색 리스트 설정
