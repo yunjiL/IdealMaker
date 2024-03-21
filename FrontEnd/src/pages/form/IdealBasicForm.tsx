@@ -1,19 +1,14 @@
 import { useState } from "react";
 import {useForm} from  "react-hook-form";
 import { Button, Label, Radio } from 'flowbite-react';
-
-interface BasicForm{
-    surveyType: string;
-    genderId: string;
-}
+import { BasicForm } from "../../types/type";
+import { useNavigate } from "react-router-dom";
 
 const Q_TYPE = {
-    SURVEY :"surveyType",
+    SURVEY :"surveyId",
     GENDER : "genderId",
 } as const;
 type Q_TYPE = typeof Q_TYPE[keyof typeof Q_TYPE];
-
-
 
 const BasicFormData=[
     {
@@ -38,8 +33,11 @@ const BasicFormData=[
 
 
 const IdealBasicForm = () => {
+    const navigate = useNavigate();
+
     const [nowIdx, setNowIdx] = useState(0);
     const [selectedIdx, setSelectedIdx] = useState("");
+
 
     const {
         formState: {errors},
@@ -51,47 +49,53 @@ const IdealBasicForm = () => {
       } = useForm<BasicForm>({
         mode:"onSubmit",
         defaultValues:{
-            surveyType:"concept"
+            surveyId:"concept"
             , genderId:"0"
         },
       });
 
+
     const handleRegistration=(data:BasicForm)=>{
         console.log(data);
+        navigate("/IdealForm", {state:{surveyId: data.surveyId, genderId:data.genderId}});
+        //axios 통신 넣기
+        //link넣기
     };
 
   return (
     <div className="flex">
 
         <form onSubmit={handleSubmit(handleRegistration)} className="w-full">
+
+
             {BasicFormData[nowIdx]  &&(
                 <>
                 <p className="font-bold text-xl my-10 text-center">{BasicFormData[nowIdx].question}</p>
+                
                 {BasicFormData[nowIdx].answer.map((item)=> 
-                <Button onClick={()=>{
+                <Button 
+                key={item.id}
+                onClick={()=>{
                     setValue(BasicFormData[nowIdx].formType,`${item.id}`)
                     setSelectedIdx(item.id);
-                    
-            }} 
+                }} 
+
             className={item.id===selectedIdx?
-                "bg-lightpink rounded-3xl shadow-custom-outer px-[4%] mx-auto my-[5%]" 
-                :"bg-bluegray rounded-3xl shadow-custom-outer px-[4%] mx-auto my-[5%]"} >{item.meaning}</Button>
+                "bg-lightpink rounded-3xl shadow-custom-outer px-[4%] mx-auto my-[5%] active:scale-90 duration-300" 
+                :"bg-bluegray rounded-3xl shadow-custom-outer px-[4%] mx-auto my-[5%] active:scale-90 duration-300"} >{item.meaning}</Button>
                 )}
                 </>
             )
             }
-
             {
                 <div className="flex">
                     {
                         nowIdx<BasicFormData.length-1? 
-                        <Button onClick={()=>setNowIdx(nowIdx+1)} className="mx-auto text-center"> 다음</Button>
-                        :<input type="submit" value="제출" className="mx-auto text-center"/>
+                        <Button onClick={()=>setNowIdx(nowIdx+1)} className="mx-auto text-center">이상형 찾으러 가기</Button>
+                        : <input type="submit" value="제출" className="mx-auto text-center"/>
                     }
                 </div>
             }
-            
-        
         </form>
 
 

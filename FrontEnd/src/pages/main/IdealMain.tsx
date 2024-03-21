@@ -1,4 +1,5 @@
 import MainLogo from "../../assets/icons/MainLogo.tsx";
+import {Link} from 'react-router-dom';
 
 const IdealMain = () => {
     return (
@@ -15,7 +16,7 @@ const IdealMain = () => {
             </div>
 
             <div className="flex justify-center mb-[4%]">
-                <button className="p-2 w-[55%] bg-bluegray rounded-3xl shadow-custom-outer hover:bg-[#AEC1E0] active:scale-90 duration-300">AI 이상형 만들어 가보기</button>
+                <Link to="/form" className="text-center p-2 w-[55%] bg-bluegray rounded-3xl shadow-custom-outer hover:bg-[#AEC1E0] active:scale-90 duration-300" >AI 이상형 만들어 가보기</Link>
             </div>
             <div className="flex justify-center mb-[4%]">
                 <button className="p-2 w-[55%] bg-lightpink rounded-3xl shadow-custom-outer hover:bg-[#F798A5] active:scale-90 duration-300">AI 이상형 월드컵 하러가기</button>
