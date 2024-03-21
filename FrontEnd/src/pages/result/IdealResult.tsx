@@ -1,13 +1,27 @@
-import example from "@/assets/images/react.svg"
 import dog from "@/assets/images/dog.webp"
 import fox from "@/assets/images/fox.webp"
 import ReportModal from "../../components/modals/report/ReportModal.tsx";
+import {useEffect, useState} from "react";
+import {getResultAPI} from "../../apis/ResultAPI.tsx";
+
+interface ResultData {
+    idealURL : string;
+    animalType: string;
+    animalImage : string;
+}
 
 const IdealResult = () => {
+    const[result, setResult] = useState<ResultData>()
     const report = () => {
         (document.getElementById('reportModal') as HTMLDialogElement).showModal()
     }
 
+    useEffect(()=>{
+        getResultAPI(1).then((data)=>{
+            setResult(data)
+        })
+    },[])
+    console.log(result)
     return (
         <div>
             <div>
@@ -15,7 +29,7 @@ const IdealResult = () => {
             </div>
 
             <div className={"flex justify-center mb-[8%]"}>
-                <img src={example} alt={"example"} className={"w-[75%] bg-bluegray rounded-2xl"}/>
+                <img src={result?.idealURL} alt={"example"} className={"w-[75%] bg-bluegray rounded-2xl"}/>
             </div>
 
             <div>
@@ -24,12 +38,8 @@ const IdealResult = () => {
 
             <div className="flex justify-evenly mb-[6%]">
                 <div className="flex flex-col w-[35%]">
-                    <img src={dog} alt={"dog"} className={"w-[100%] rounded-full mx-auto mb-[3%]"}/>
-                    <p className="text-xl text-center">1위 강아지상</p>
-                </div>
-                <div className="flex flex-col w-[35%]">
-                    <img src={fox} alt={"fox"} className={"w-[100%] rounded-full mx-auto mb-[3%]"}/>
-                    <p className="text-xl text-center">2위 여우상</p>
+                    <img src={result?.animalImage} alt={"dog"} className={"w-[100%] rounded-full mx-auto mb-[3%]"}/>
+                    <p className="text-xl text-center">{result?.animalType}</p>
                 </div>
             </div>
 
