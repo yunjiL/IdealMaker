@@ -29,13 +29,13 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/survey")
+@RequestMapping("/api")
 @RequiredArgsConstructor
 public class SurveySampleController {
 
 	private final SurveyService surveyService;
 
-	@GetMapping("/custom/{gender}")
+	@GetMapping("/survey/custom/{gender}")
 	@ResponseStatus(HttpStatus.OK)
 	public ResponseEntity<?> getCustomSurveyList(@PathVariable("gender") Integer gender){
 
@@ -131,7 +131,7 @@ public class SurveySampleController {
 		return ResponseEntity.ok(response);
 	}
 
-	@GetMapping("/concept/{gender}")
+	@GetMapping("/survey/concept/{gender}")
 	@ResponseStatus(HttpStatus.OK)
 	public ResponseEntity<Map<String, Object>> getConceptSurveyList(@PathVariable("gender") Integer gender){
 
@@ -188,6 +188,24 @@ public class SurveySampleController {
 
 		return ResponseEntity.ok(response);
 	}
+
+
+	@GetMapping("/result/{idealId}")
+	@ResponseStatus(HttpStatus.OK)
+	public ResponseEntity<Map<String, String>> getResult(@PathVariable("idealId") Integer idealId){
+
+		Map<String, String> response = new HashMap<>();
+
+
+		response.put("idealURL", "https://i.imgur.com/azbkNYn.png");
+		response.put("animalType", "여우상");
+		response.put("animalImage", "https://i.imgur.com/Cpu7Fvy.png");
+
+
+		return ResponseEntity.ok(response);
+	}
+
+
 
 
 }
