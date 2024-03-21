@@ -5,4 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.ideal.idealmaker.component.domain.HairLength;
 
 public interface HairLengthRepository extends JpaRepository<HairLength, Integer> {
+	HairLength getById(Integer id);
 }
