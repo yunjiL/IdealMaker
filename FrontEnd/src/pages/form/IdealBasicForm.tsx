@@ -40,8 +40,7 @@ const IdealBasicForm = () => {
 
 
     const {
-        formState:
-        handleSubmit,
+        handleSubmit:onSubmit,
         setValue,
       } = useForm<BasicForm>({
         mode:"onSubmit",
@@ -50,18 +49,14 @@ const IdealBasicForm = () => {
             , genderId:"0"
         },
       });
-
-
-    const handleRegistration=(data:BasicForm)=>{
+    const handleSubmit=(data:BasicForm)=>{
         console.log(data);
         navigate("/IdealForm", {state:{surveyId: data.surveyId, genderId:data.genderId}});
-        //axios 통신 넣기
-        //link넣기
     };
 
   return (
     <div className="flex">
-        <form onSubmit={handleSubmit(handleRegistration)} className="w-full">
+        <form onSubmit={onSubmit(handleSubmit)} className="w-full">
             {BasicFormData[nowIdx]  &&(
                 <>
                 <p className="font-bold text-xl my-10 text-center">{BasicFormData[nowIdx].question}</p>

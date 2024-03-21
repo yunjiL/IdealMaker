@@ -1,5 +1,3 @@
-import dog from "@/assets/images/dog.webp"
-import fox from "@/assets/images/fox.webp"
 import ReportModal from "../../components/modals/report/ReportModal.tsx";
 import {useEffect, useState} from "react";
 import {getResultAPI} from "../../apis/ResultAPI.tsx";
