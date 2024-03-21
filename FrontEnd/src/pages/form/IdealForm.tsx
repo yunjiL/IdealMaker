@@ -26,8 +26,7 @@ const IdealForm = () => {
 
 
   const {
-      formState:
-      handleSubmit,
+      handleSubmit:onSubmit,
       setValue,
     } = useForm<ConceptFormResult>({
       mode:"onSubmit",
@@ -63,12 +62,12 @@ const IdealForm = () => {
 
 return (
   <div className="flex">
-      <form onSubmit={handleSubmit(handleRegistration)} className="w-full">
+      <form onSubmit={onSubmit(handleRegistration)} className="w-full">
       {/* 설문조사 하나 시작 */}
       <p className="font-bold text-xl my-[5%] text-center"> 나이를 선택해주세요. </p>
       {
         surveyList?.ageList?.map((item)=>
-        <Button 
+        <Button
         key={item.ageId}
         onClick={()=>{
           if(selected[1]==="-1"){
@@ -82,7 +81,7 @@ return (
 
         }
       }   className={selected[1]===item.ageId.toString()?
-        "bg-lightpink rounded-3xl shadow-custom-outer px-[4%] mx-auto my-[5%] active:scale-90 duration-300" 
+        "bg-lightpink rounded-3xl shadow-custom-outer px-[4%] mx-auto my-[5%] active:scale-90 duration-300"
         :"bg-bluegray rounded-3xl shadow-custom-outer px-[4%] mx-auto my-[5%] active:scale-90 duration-300"}> {item.age} </Button>
         )
       }
@@ -92,7 +91,7 @@ return (
       <p className="font-bold text-xl my-[5%] text-center"> 얼굴형을 선택해주세요. </p>
       {
         surveyList?.faceShapeList?.map((item,)=>
-        <Button 
+        <Button
         key={item.faceShapeId}
         onClick={()=>{
           if(selected[2]==="-1"){
@@ -105,7 +104,7 @@ return (
           setSelected([...selected]);
         }
       }   className={selected[2]===item.faceShapeId.toString()?
-        "bg-lightpink rounded-3xl shadow-custom-outer px-[4%] mx-auto my-[5%] active:scale-90 duration-100" 
+        "bg-lightpink rounded-3xl shadow-custom-outer px-[4%] mx-auto my-[5%] active:scale-90 duration-100"
         :"bg-bluegray rounded-3xl shadow-custom-outer px-[4%] mx-auto my-[5%] active:scale-90 duration-100"}> {item.faceShape} </Button>
         )
       }
@@ -116,7 +115,7 @@ return (
       <p className="font-bold text-xl my-[5%] text-center"> 피부색을 선택해주세요. </p>
       {
         surveyList?.skinColorList?.map((item, )=>
-        <Button 
+        <Button
         key={item.skinColorId}
         onClick={()=>{
           if(selected[3]==="-1"){
@@ -129,7 +128,7 @@ return (
           setSelected([...selected]);
         }
       }   className={selected[3] === item.skinColorId.toString()?
-        "bg-lightpink rounded-3xl shadow-custom-outer px-[4%] mx-auto my-[5%] active:scale-90 duration-100" 
+        "bg-lightpink rounded-3xl shadow-custom-outer px-[4%] mx-auto my-[5%] active:scale-90 duration-100"
         :"bg-bluegray rounded-3xl shadow-custom-outer px-[4%] mx-auto my-[5%] active:scale-90 duration-100"}> {item.skinColor} </Button>
         )
       }
@@ -139,7 +138,7 @@ return (
       <p className="font-bold text-xl my-[5%] text-center"> 눈 색을 선택해주세요. </p>
       {
         surveyList?.eyeStyleList?.map((item)=>
-        <Button 
+        <Button
         key={item.eyeStyleId}
         onClick={()=>{
           if(selected[4]==="-1"){
@@ -152,7 +151,7 @@ return (
           setSelected([...selected]);
         }
       }   className={ selected[4] === item.eyeStyleId.toString()?
-        "bg-lightpink rounded-3xl shadow-custom-outer px-[4%] mx-auto my-[5%] active:scale-90 duration-100" 
+        "bg-lightpink rounded-3xl shadow-custom-outer px-[4%] mx-auto my-[5%] active:scale-90 duration-100"
         :"bg-bluegray rounded-3xl shadow-custom-outer px-[4%] mx-auto my-[5%] active:scale-90 duration-100"}> {item.eyeStyle} </Button>
         )
       }
@@ -162,7 +161,7 @@ return (
       <p className="font-bold text-xl my-[5%] text-center"> 컨셉을 선택해주세요. </p>
       {
         surveyList?.conceptList?.map((item)=>
-        <Button 
+        <Button
         key={item.conceptId}
         onClick={()=>{
           if(selected[5]==="-1"){
@@ -176,7 +175,7 @@ return (
 
         }
       }   className={selected[5] === item.conceptId.toString()?
-        "bg-lightpink rounded-3xl shadow-custom-outer px-[4%] mx-auto my-[5%] active:scale-90 duration-100" 
+        "bg-lightpink rounded-3xl shadow-custom-outer px-[4%] mx-auto my-[5%] active:scale-90 duration-100"
         :"bg-bluegray rounded-3xl shadow-custom-outer px-[4%] mx-auto my-[5%] active:scale-90 duration-100"}> {item.concept} </Button>
         )
       }
