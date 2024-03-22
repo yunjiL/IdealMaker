@@ -3,8 +3,6 @@ package com.ideal.idealmaker.survey.dto;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.ideal.idealmaker.component.domain.EyeStyle;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -14,12 +12,14 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class SurveyConceptListDto {
+public class SurveyDto {
+
+	private String title;
 
 	private String type;
 
-	private String gender;
+	private String question;
 
-	private SurveyDto[] questions;
-
+	@Builder.Default
+	private List<SelectDto> answers = new ArrayList<>();
 }

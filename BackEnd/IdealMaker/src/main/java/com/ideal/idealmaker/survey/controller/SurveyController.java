@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ideal.idealmaker.survey.dto.SurveyConceptListDto;
-import com.ideal.idealmaker.survey.dto.SurveyCustomListDto;
 import com.ideal.idealmaker.survey.service.SurveyService;
 
 import lombok.RequiredArgsConstructor;
@@ -22,20 +21,10 @@ public class SurveyController {
 
 	private final SurveyService surveyService;
 
-	@GetMapping("/custom/{gender}")
-	@ResponseStatus(HttpStatus.OK)
-	public SurveyCustomListDto getCustomSurveyList(@PathVariable(value = "gender") String gender) {
-
-		SurveyCustomListDto.FemaleCustom female = new SurveyCustomListDto.FemaleCustom();
-
-		return null;
-	}
-
 	@GetMapping("/concept/{gender}")
 	@ResponseStatus(HttpStatus.OK)
 	public SurveyConceptListDto getConceptSurveyList(@PathVariable(value = "gender") String gender) {
 
-		SurveyCustomListDto.FemaleCustom female = new SurveyCustomListDto.FemaleCustom();
 
 		return null;
 	}

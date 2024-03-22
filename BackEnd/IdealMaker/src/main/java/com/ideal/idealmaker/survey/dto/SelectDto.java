@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class MakeUpDto {
+public class SelectDto {
 
-	private Integer makeUpId;
+	private Integer id;
 
-	private String makeUp;
+	private String value;
 }
