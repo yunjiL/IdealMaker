@@ -2,12 +2,12 @@ package com.ideal.idealmaker.survey.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ideal.idealmaker.survey.dto.SurveyConceptListDto;
+import com.ideal.idealmaker.survey.dto.SurveyListDto;
 import com.ideal.idealmaker.survey.service.SurveyService;
 
 import lombok.RequiredArgsConstructor;
@@ -21,11 +21,17 @@ public class SurveyController {
 
 	private final SurveyService surveyService;
 
-	@GetMapping("/concept/{gender}")
+	@GetMapping()
 	@ResponseStatus(HttpStatus.OK)
-	public SurveyConceptListDto getConceptSurveyList(@PathVariable(value = "gender") String gender) {
+	public SurveyListDto getSurveyList(@RequestParam(value = "type") String type
+										,@RequestParam(value = "gender") Integer gender) {
 
-
-		return null;
+		if (type.equals("concept")) {
+			return surveyService.readSurveyConceptList(gender);
+		} else if (type.equals("custom")) {
+			return surveyService.readSurveyCustomList(gender);
+		} else {
+			return null; // exception 처리
+		}
 	}
 }
