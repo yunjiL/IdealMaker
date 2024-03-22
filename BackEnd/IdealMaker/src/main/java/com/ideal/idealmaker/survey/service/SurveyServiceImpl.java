@@ -60,9 +60,9 @@ public class SurveyServiceImpl implements SurveyService {
 		getCustomSurveyList(survey, gender.getId()); // 커스텀 공통 설문 리스트
 		if (gender.getId() == 2) { // 여성일 경우 추가되는 리스트
 			List<SelectDto> hairLength = hairLengthRepository.findIdAndHairLength();
-			survey[5] = SurveyMapper.toSurveyDto("hairLength", "select", "머리 길이를 선택해주세요", hairLength);
+			survey[9] = SurveyMapper.toSurveyDto("hairLength", "select", "머리 길이를 선택해주세요", hairLength);
 			List<SelectDto> makeUp = makeUpRepository.findIdAndMakeUp();
-			survey[6] = SurveyMapper.toSurveyDto("makeUp", "select", "메이크업 스타일을 선택해주세요", makeUp);
+			survey[10] = SurveyMapper.toSurveyDto("makeUp", "select", "메이크업 스타일을 선택해주세요", makeUp);
 		}
 
 		return SurveyMapper.toSurveyListDto("custom", genderId, survey);
