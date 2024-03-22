@@ -14,11 +14,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class SurveyConceptListDto {
+public class SurveyListDto {
 
 	private String type;
 
-	private String gender;
+	private Integer gender;
 
 	private SurveyDto[] questions;
 
