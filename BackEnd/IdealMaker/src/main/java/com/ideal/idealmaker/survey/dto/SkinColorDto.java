@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class SkinColorDto {
 
-	private Integer id;
+	private Integer skinColorId;
 
 	private String skinColor;
 }
