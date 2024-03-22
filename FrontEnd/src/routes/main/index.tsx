@@ -6,6 +6,7 @@ import Loading from "../../components/loading/Loading.tsx";
 import IdealResult from "../../pages/result/IdealResult.tsx";
 import IdealBasicForm from '../../pages/form/IdealBasicForm.tsx';
 import IdealForm from '../../pages/form/IdealForm.tsx';
+import IdealPick from "../../pages/idealPick/IdealPick.tsx";
 
 function Index() {
 
@@ -18,6 +19,7 @@ function Index() {
                 <Route path="/result" element={<IdealResult/>}/>
                 <Route path="/form" element={<IdealBasicForm/>}/>
                 <Route path="/IdealForm" element={<IdealForm />}/>
+                <Route path="/idealPick" element={<IdealPick/>}/>
                 {/* 밑은 다른 주소로 접근 방지용 */}
                 <Route path={"*"} element={<Navigate to="/"/>}/>
             </Routes>
