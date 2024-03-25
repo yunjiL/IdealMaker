@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AgeDto {
+public class SelectDto {
 
-	private Integer ageId;
+	private Integer id;
 
-	private Integer age;
+	private String value;
 }

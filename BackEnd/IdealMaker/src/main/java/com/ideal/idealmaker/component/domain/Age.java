@@ -20,7 +20,7 @@ public class Age {
 	private Integer id;
 
 	@Column(nullable = false)
-	private Integer age;
+	private String age;
 
 	@Column(nullable = false)
 	private String eng;
