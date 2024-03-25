@@ -34,7 +34,7 @@ public class RankingService {
 	/*
 	* 	작성자 : 정여민
 	* 	작성 일시 : 2024.03.21
-	* 	업데이트 : 2024.03.21
+	* 	업데이트 : 2024.03.25
 	*
 	* */
 
@@ -46,20 +46,31 @@ public class RankingService {
 
 		List<RankingResponseDto> rankingList = new ArrayList<>();
 
-		List<AnimalType> rankingEntity = rankingRepository.findAll();
+		List<AnimalType> rankingEntity = new ArrayList<>();
 
-		// animalType entity를 DTO로 변환
-		for (AnimalType animalType : rankingEntity) {
-			RankingResponseDto dto = RankingResponseDto.from(animalType);
-			rankingList.add(dto);
+		// 에외처리 
+		try{
+			rankingEntity = rankingRepository.findAll();
+		}catch(Exception e) {	// 후에 바꿀 것
+			throw new RuntimeException();
 		}
 
+		// 조회된 데이터가 없으면
+		if(rankingEntity.isEmpty()){
+			RankingResponseDto dto = new RankingResponseDto(null, null, 0);
 
-		for (RankingResponseDto rankingResponseDto : rankingList) {
-			System.out.println(rankingResponseDto.getAnimalType());
+		}else{	// 데이터가 존재하면
+			// animalType entity를 DTO로 변환
+			for (AnimalType animalType : rankingEntity) {
+				RankingResponseDto dto = RankingResponseDto.from(animalType);
+				rankingList.add(dto);
+			}
+			for (RankingResponseDto rankingResponseDto : rankingList) {
+				System.out.println(rankingResponseDto.getAnimalType());
+			}
+			result.put("animalTypeRanking", rankingList);
 		}
 
-		result.put("animalTypeRanking", rankingList);
 
 		return result;
 	}
