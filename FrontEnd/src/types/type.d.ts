@@ -1,26 +1,31 @@
-/* 기초 설문조사 시작 */ 
-
+/* 기초 설문조사 시작 */
 export interface BasicForm{
     surveyId: string;
     genderId: string;
 }
 
+/* 기초 설문조사 끝 */
 
-/* 기초 설문조사 끝 */ 
+export interface Answer {
+    id: number;
+    value: string;
+}
 
 
 /* 이상형 설문조사 시작 */ 
-export interface ConceptForm{
-    genderInfo: {genderId: number, gender:string};
-
-    ageList: {ageId:number, age:string}[];
-    faceShapeList: {faceShapeId:number, faceShape:string}[];
-    skinColorList: {skinColorId:number, skinColor:string}[];
-    eyeStyleList: {eyeStyleId:number, eyeStyle:string}[];
-    conceptList: {conceptId:number, concept:string}[];
-
-    pupilColor:string;
+export interface Question{
+    title: string;
+    type: string;
+    question: string;
+    answers: Answer[] | null;
 }
+
+export interface ConceptForm{
+    type: string;
+    gender:number;
+    questions:Question[];
+}
+
 
 export interface CustomMan extends ConceptForm{
     backgroundList: {backgroundId:number, background:string}[];
@@ -37,6 +42,8 @@ export interface CustomWoman extends CustomMan{
 
 
 export interface ConceptFormResult{
+    [index:string]:number|string|Color;
+
     genderId: number;
     ageId:number;
     faceShapeId:number;
