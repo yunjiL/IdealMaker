@@ -1,18 +1,6 @@
-import create from 'zustand';
+import {create} from 'zustand';
 import {createJSONStorage, devtools, persist} from 'zustand/middleware';
-
-interface Example {
-    id: number;
-    name: string;
-}
-
-interface IdealPickState {
-    examples: Example[];
-    setExamples: (examples: Example[]) => void;
-    removeExample: (example: Example) => void;
-    winner: Example[] | null;
-    setWinner: (winner: Example) => void;
-}
+import {Example, IdealPickState} from "../types/type";
 
 export const useIdealPickStore = create<IdealPickState>()(
    devtools(
