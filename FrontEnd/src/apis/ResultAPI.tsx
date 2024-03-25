@@ -1,4 +1,5 @@
 import LocalAxios from "../utils/axios/LocalAxios.ts"
+import {ConceptFormResult} from "../types/type";
 
 const axios = LocalAxios()
 
@@ -13,11 +14,26 @@ export const getResultAPI = async (imageId:number) => {
 
 export const getFormAPI = async(surveyId:string, genderId:string)=>{
     try{
-        const url = `/survey/${surveyId}/${genderId}`;
-
-        const response = await axios.get(url)
+        const url = `/survey?type=${surveyId}&gender=${genderId}`;
+        console.log(url)
+            const response = await axios.get(url)
         return response.data
 
+    }catch(error){
+        handleApiError('결과를 가져오는 중 오류 발생 ', error)
+    }
+}
+
+export const postFormResultAPI = async(data:ConceptFormResult, surveyType:string) =>{
+    try{
+
+    let url = `/survey/${surveyType}`;
+    if(data.surveyType==="custom"){
+        url+=`/${data.genderId}`;
+    }
+    console.log(url)
+        const response = await axios.post(url, JSON.stringify(data))
+        return response.data
     }catch(error){
         handleApiError('결과를 가져오는 중 오류 발생 ', error)
     }
@@ -28,3 +44,4 @@ const handleApiError = (message:any, error:any) => {
     console.error(`${message}: `, error);
     throw new Error(message);
 };
+
