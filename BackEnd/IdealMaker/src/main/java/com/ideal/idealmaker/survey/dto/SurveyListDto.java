@@ -9,8 +9,12 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class FaceDto {
-	private Integer faceId;
+public class SurveyListDto {
 
-	private String face;
+	private String type;
+
+	private Integer gender;
+
+	private SurveyDto[] questions;
+
 }
