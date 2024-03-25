@@ -1,6 +1,6 @@
 package com.ideal.idealmaker.gallery.data;
 
-import com.ideal.idealmaker.gallery.domain.model.Image;
+import com.ideal.idealmaker.gallery.domain.Image;
 
 public class ImageDTO {
     private Long idealId;
@@ -33,12 +33,4 @@ public class ImageDTO {
         this.animalType = animalType;
     }
 
-    // 정적 변환 메소드
-    public static ImageDTO fromEntity(Image image) {
-        ImageDTO dto = new ImageDTO();
-        dto.setIdealId(image.getIdealId());
-        dto.setIdealURL(image.getIdealURL());
-        dto.setAnimalType(image.getAnimalType());
-        return dto;
-    }
 }

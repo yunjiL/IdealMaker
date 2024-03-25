@@ -1,7 +1,7 @@
 package com.ideal.idealmaker.gallery.mapper;
 
 import com.ideal.idealmaker.gallery.data.ImageDTO;
-import com.ideal.idealmaker.gallery.domain.model.Image;
+import com.ideal.idealmaker.gallery.domain.Image;
 
 public class ImageMapper {
 

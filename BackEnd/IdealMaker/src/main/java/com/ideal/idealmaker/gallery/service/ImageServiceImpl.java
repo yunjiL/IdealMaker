@@ -1,6 +1,6 @@
 package com.ideal.idealmaker.gallery.service;
 
-import com.ideal.idealmaker.gallery.domain.model.Image;
+import com.ideal.idealmaker.gallery.domain.Image;
 import com.ideal.idealmaker.gallery.repository.ImageRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;

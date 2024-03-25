@@ -2,7 +2,8 @@ package com.ideal.idealmaker.gallery.controller;
 
 
 import com.ideal.idealmaker.gallery.data.ImageDTO;
-import com.ideal.idealmaker.gallery.domain.model.Image;
+import com.ideal.idealmaker.gallery.domain.Image;
+import com.ideal.idealmaker.gallery.mapper.ImageMapper;
 import com.ideal.idealmaker.gallery.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -28,7 +29,7 @@ public class ImageController {
     public ResponseEntity<Page<ImageDTO>> getAllImages(Pageable pageable) {
         Page<Image> images = imageService.findAllImages(pageable);
         // 이미지 전체 조회에서의 DTO 변환 부분 수정
-        Page<ImageDTO> dtoPage = images.map(ImageDTO::fromEntity);
+        Page<ImageDTO> dtoPage = images.map(ImageMapper::toDto);
         return ResponseEntity.ok(dtoPage);
     }
 
@@ -38,7 +39,7 @@ public class ImageController {
         Image image = imageService.findImageById(idealId);
         if (image != null) {
             // 이미지 상세 조회에서의 DTO 변환 부분 수정
-            ImageDTO imageDTO = ImageDTO.fromEntity(image);
+            ImageDTO imageDTO = ImageMapper.toDto(image);
             return ResponseEntity.ok(imageDTO);
         } else {
             return ResponseEntity.notFound().build();
@@ -49,7 +50,7 @@ public class ImageController {
     @GetMapping("/api/gallery/search")
     public ResponseEntity<Page<ImageDTO>> findByAnimalType(@RequestParam String animalType, Pageable pageable) {
         Page<Image> images = imageService.findByAnimalType(animalType, pageable);
-        Page<ImageDTO> dtoPage = images.map(ImageDTO::fromEntity);
+        Page<ImageDTO> dtoPage = images.map(ImageMapper::toDto);
         return ResponseEntity.ok(dtoPage);
     }
 

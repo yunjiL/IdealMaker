@@ -1,4 +1,4 @@
-package com.ideal.idealmaker.gallery.domain.model;
+package com.ideal.idealmaker.gallery.domain;
 
 
 import jakarta.persistence.Entity;
