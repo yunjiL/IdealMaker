@@ -25,8 +25,8 @@ const BasicFormData=[
         formType:Q_TYPE.GENDER,
         question: "어떤 성별의 이상형을 보고 싶나용?",
         answer:[
-            {id: "0", meaning: "난...남자가 보고싶구나..."},
-            {id: "1", meaning: "난...여자가 보고싶구나..."},
+            {id: "1", meaning: "난...남자가 보고싶구나..."},
+            {id: "2", meaning: "난...여자가 보고싶구나..."},
         ]
     }
 ];
