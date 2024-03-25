@@ -83,12 +83,12 @@ public class SurveyServiceImpl implements SurveyService {
 
 		List<SelectDto> age = ageRepository.findIdAndAge();
 		survey[0] = SurveyMapper.toSurveyDto("age", "select", "나이를 선택해주세요", age);
-		List<SelectDto> face = faceRepository.findIdAndFace();
-		survey[1] = SurveyMapper.toSurveyDto("face", "select", "얼굴형을 선택해주세요", face);
+		List<SelectDto> faceShape = faceRepository.findIdAndFace();
+		survey[1] = SurveyMapper.toSurveyDto("faceShape", "select", "얼굴형을 선택해주세요", faceShape);
 		List<SelectDto> skinColor = skinColorRepository.findIdAndSkinColor();
 		survey[2] = SurveyMapper.toSurveyDto("skinColor", "select", "피부색을 선택해주세요", skinColor);
 		List<SelectDto> eyeStyle = eyeStyleRepository.findIdAndEyeStyle();
 		survey[3] = SurveyMapper.toSurveyDto("eyeStyle", "select", "눈 모양을 선택해주세요", eyeStyle);
-		survey[4] = SurveyMapper.toSurveyDto("eyeColor", "color", "눈동자 색을 선택해주세요", null);
+		survey[4] = SurveyMapper.toSurveyDto("pupilColor", "color", "눈동자 색을 선택해주세요", null);
 	}
 }

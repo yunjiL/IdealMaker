@@ -2,9 +2,7 @@ package com.ideal.idealmaker.survey.controller;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.*;
 
-import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +25,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/survey1")
 @RequiredArgsConstructor
 public class SurveySampleController {
 
