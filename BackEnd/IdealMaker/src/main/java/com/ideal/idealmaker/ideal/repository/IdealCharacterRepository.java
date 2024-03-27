@@ -7,4 +7,5 @@ import com.ideal.idealmaker.ideal.domain.IdealCharacter;
 
 @Repository
 public interface IdealCharacterRepository extends JpaRepository<IdealCharacter,Integer> {
+	IdealCharacter getById(Integer id);
 }
