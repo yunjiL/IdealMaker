@@ -11,4 +11,5 @@ import com.ideal.idealmaker.survey.dto.SelectDto;
 public interface AgeRepository extends JpaRepository<Age, Integer> {
 	@Query("SELECT new com.ideal.idealmaker.survey.dto.SelectDto(a.id, a.age) FROM Age a")
 	List<SelectDto> findIdAndAge();
+	Age getById(Integer id);
 }
