@@ -47,7 +47,7 @@ public class FileS3UploadServiceImpl implements FileS3UploadService {
      */
     private String generateRandomName(String extension) {
         String random = UUID.randomUUID().toString();
-        return random + extension;
+        return random + "." + extension;
     }
 
     /**
@@ -173,12 +173,17 @@ public class FileS3UploadServiceImpl implements FileS3UploadService {
     /**
      * 이미지 url을 s3 버킷에 업로드
      * 
-     * @param keyName
+     * @param idealId
      * @param imageUrl
      * @return
      */
     @Override
-    public FileInfoDto uploadImageURL(String keyName, String imageUrl) {
+    public FileInfoDto uploadImageURL(String idealId, String imageUrl) {
+
+        String ext = StringUtils.getFilenameExtension(imageUrl); //확장자
+
+        String generatedName = idealId + "/" + generateRandomName(ext); //새로 생성된 이미지 이름
+
 
         try {
             // 외부 이미지 URL에서 InputStream 생성
@@ -190,7 +195,8 @@ public class FileS3UploadServiceImpl implements FileS3UploadService {
             // S3에 이미지 업로드
             PutObjectRequest putObjectRequest = PutObjectRequest.builder()
                 .bucket(bucketName)
-                .key(keyName)
+                .key(generatedName)
+                .contentType(getContentType(ext))
                 .build();
 
             s3Client.putObject(putObjectRequest,
@@ -202,9 +208,9 @@ public class FileS3UploadServiceImpl implements FileS3UploadService {
             e.printStackTrace();
         }
 
-        String fileURL = s3Client.utilities().getUrl(GetUrlRequest.builder().bucket(bucketName).key(keyName).build()).toExternalForm();
+        String fileURL = s3Client.utilities().getUrl(GetUrlRequest.builder().bucket(bucketName).key(generatedName).build()).toExternalForm();
         return FileInfoDto.builder()
-            .fileName(keyName)
+            .fileName(generatedName)
             .fileURL(fileURL)
             .build();
     }
