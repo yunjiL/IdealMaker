@@ -1,6 +1,7 @@
 import ReportModal from "../../components/modals/report/ReportModal.tsx";
 import {useEffect, useState} from "react";
 import {getResultAPI} from "../../apis/ResultAPI.tsx";
+import {animalPic} from "../../utils/idealPick/IdealPickFunc.tsx";
 
 interface ResultData {
     idealURL : string;
@@ -19,7 +20,7 @@ const IdealResult = () => {
             setResult(data)
         })
     },[])
-    console.log(result)
+
     return (
         <div>
             <div>
@@ -36,7 +37,7 @@ const IdealResult = () => {
 
             <div className="flex justify-evenly mb-[6%]">
                 <div className="flex flex-col w-[35%]">
-                    <img src={result?.animalImage} alt={"dog"} className={"w-[100%] rounded-full mx-auto mb-[3%]"}/>
+                    <img src={animalPic(`wolf`)} alt={"dog"} className={"w-[100%] rounded-full mx-auto mb-[3%]"}/>
                     <p className="text-xl text-center">{result?.animalType}</p>
                 </div>
             </div>

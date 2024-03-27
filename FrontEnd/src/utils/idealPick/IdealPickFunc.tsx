@@ -29,3 +29,8 @@ export const buttonBG = (side:string) => {
             return `${baseClass}`
     }
 }
+
+export const animalPic = (animal:string) => {
+    const baseURL = "src/assets/images/"
+    return `${baseURL}${animal}.webp`
+}

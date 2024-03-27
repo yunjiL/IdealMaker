@@ -1,5 +1,5 @@
-import pic from "@/assets/images/react.svg";
 import {buttonBG} from "../../utils/idealPick/IdealPickFunc.tsx";
+import pic from "@/assets/images/react.svg"
 
 interface props {
     name:string;
@@ -11,7 +11,7 @@ export const IdealPickDiv = ({name, show, side}:props) => {
     return (
         <>
         <div className="flex justify-center mt-[10%] mb-[5%]">
-            <img src={pic} alt={"left"}
+            <img src={pic} alt={"animal"}
                  className="w-[80%] h-[300px] bg-bluegray rounded-xl transition-transform duration-500 ease-out hover:scale-110 active:scale-90"/>
         </div>
 

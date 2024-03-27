@@ -49,8 +49,8 @@ const IdealPick = () => {
             <div>
                 <p className="text-center text-2xl mb-[5%]">당신의 선택은??</p>
             </div>
-            <div>
-                <p className="text-center text-2xl">{IdealPickFunc(examples.length+(winner?.length ?? 0))}</p>
+            <div className="flex justify-center mb-[3%]">
+                <p className="bg-[#91C3FD] rounded-2xl w-[15%] text-center text-2xl">{IdealPickFunc(examples.length+(winner?.length ?? 0))}</p>
             </div>
 
             <div className={"flex flex-col flex-grow"}>
