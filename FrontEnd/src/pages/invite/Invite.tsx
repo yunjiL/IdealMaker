@@ -19,6 +19,7 @@ const Invite = () => {
             Toast.success("초대 코드 인증 완료!",{autoClose:500})
             setTimeout(() => {
                 navigate('/form');
+                window.location.reload()
             }, 1000);
         } else {
             setShakeError(true);
