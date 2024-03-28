@@ -1,5 +1,5 @@
 import LocalAxios from "../utils/axios/LocalAxios.ts"
-import {ConceptFormResult} from "../types/type";
+import {ConceptFormResult, CustomMan, CustomWoman} from "../types/type";
 
 const axios = LocalAxios()
 
@@ -24,7 +24,7 @@ export const getFormAPI = async(surveyId:string, genderId:string)=>{
     }
 }
 
-export const postFormResultAPI = async(data:ConceptFormResult, surveyType:string) =>{
+export const postFormResultAPI = async(data:ConceptFormResult|CustomMan|CustomWoman, surveyType:string) =>{
     try{
 
     let url = `/survey/${surveyType}`;

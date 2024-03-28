@@ -21,8 +21,8 @@ export interface Question{
 }
 
 export interface ConceptForm{
-    type: string;
-    gender:number;
+    surveyType: string;
+    genderId:number;
     questions:Question[];
 }
 
