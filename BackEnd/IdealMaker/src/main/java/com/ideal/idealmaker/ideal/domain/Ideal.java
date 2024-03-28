@@ -32,6 +32,10 @@ public class Ideal {
 	@JoinColumn(name = "character_id")
 	private IdealCharacter idealCharacter;
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "animal_type_id")
+	private AnimalType animalType;
+
 	private String idealURL;
 
 	private Integer idealRank;
