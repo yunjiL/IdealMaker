@@ -2,12 +2,14 @@ package com.ideal.idealmaker.survey.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ideal.idealmaker.survey.dto.SurveyListDto;
+import com.ideal.idealmaker.survey.dto.SurveyResultDto;
 import com.ideal.idealmaker.survey.service.SurveyService;
 
 import lombok.RequiredArgsConstructor;
@@ -33,5 +35,11 @@ public class SurveyController {
 		} else {
 			return null; // exception 처리
 		}
+	}
+
+	@GetMapping("{idealId}")
+	@ResponseStatus()
+	public SurveyResultDto getSurveyResult(@RequestBody Long idealId){
+		return surveyService.readSurveyResult(idealId);
 	}
 }
