@@ -18,7 +18,7 @@ public class ShareImageDto {
 	private String idealURL;
 
 	public static ShareImageDto from(Ideal ideal){
-		return ShareImageDto.builder().idealURL(ideal.getIdelURL()).build();
+		return ShareImageDto.builder().idealURL(ideal.getIdealURL()).build();
 	}
 
 }
