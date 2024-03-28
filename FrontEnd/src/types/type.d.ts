@@ -52,3 +52,17 @@ export interface ConceptFormResult{
     conceptId:number;
     pupilColor:string;
 }
+
+/* 이상형 월드컵 */
+export interface Example {
+    id: number;
+    name: string;
+}
+
+export interface IdealPickState {
+    examples: Example[];
+    setExamples: (examples: Example[]) => void;
+    removeExample: (example: Example) => void;
+    winner: Example[] | null;
+    setWinner: (winner: Example) => void;
+}

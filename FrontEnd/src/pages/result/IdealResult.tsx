@@ -1,25 +1,28 @@
 import ReportModal from "../../components/modals/report/ReportModal.tsx";
 import {useEffect, useState} from "react";
 import {getResultAPI} from "../../apis/ResultAPI.tsx";
+import {animalPic} from "../../utils/idealPick/IdealPickFunc.tsx";
+// import {useQuery} from "@tanstack/react-query";
+// import Loading from "../../components/loading/Loading.tsx";
 
 interface ResultData {
     idealURL : string;
     animalType: string;
-    animalImage : string;
 }
 
 const IdealResult = () => {
     const[result, setResult] = useState<ResultData>()
+    // const{data:result, isError} = useQuery({queryKey:["result"], queryFn:()=>getResultAPI(1)})
+    // if(isError) return <Loading/>
     const report = () => {
         (document.getElementById('reportModal') as HTMLDialogElement).showModal()
     }
-
     useEffect(()=>{
         getResultAPI(1).then((data)=>{
             setResult(data)
         })
     },[])
-    console.log(result)
+
     return (
         <div>
             <div>
@@ -36,7 +39,7 @@ const IdealResult = () => {
 
             <div className="flex justify-evenly mb-[6%]">
                 <div className="flex flex-col w-[35%]">
-                    <img src={result?.animalImage} alt={"dog"} className={"w-[100%] rounded-full mx-auto mb-[3%]"}/>
+                    <img src={animalPic(`wolf`)} alt={"dog"} className={"w-[100%] rounded-full mx-auto mb-[3%]"}/>
                     <p className="text-xl text-center">{result?.animalType}</p>
                 </div>
             </div>
