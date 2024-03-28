@@ -2,19 +2,21 @@ import ReportModal from "../../components/modals/report/ReportModal.tsx";
 import {useEffect, useState} from "react";
 import {getResultAPI} from "../../apis/ResultAPI.tsx";
 import {animalPic} from "../../utils/idealPick/IdealPickFunc.tsx";
+// import {useQuery} from "@tanstack/react-query";
+// import Loading from "../../components/loading/Loading.tsx";
 
 interface ResultData {
     idealURL : string;
     animalType: string;
-    animalImage : string;
 }
 
 const IdealResult = () => {
     const[result, setResult] = useState<ResultData>()
+    // const{data:result, isError} = useQuery({queryKey:["result"], queryFn:()=>getResultAPI(1)})
+    // if(isError) return <Loading/>
     const report = () => {
         (document.getElementById('reportModal') as HTMLDialogElement).showModal()
     }
-
     useEffect(()=>{
         getResultAPI(1).then((data)=>{
             setResult(data)

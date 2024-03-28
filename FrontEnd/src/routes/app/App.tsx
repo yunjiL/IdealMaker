@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import {Route, Routes} from "react-router-dom";
 import Main from "../main/index.tsx";
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
 
 const Container = styled.div`
   width: 40%;
@@ -14,13 +15,16 @@ const Container = styled.div`
 `;
 
 function App() {
+    const queryClient = new QueryClient()
   return (
     <>
+        <QueryClientProvider client={queryClient}>
         <Container>
             <Routes>
                 <Route path="/*" element={<Main/>}/>
             </Routes>
         </Container>
+        </QueryClientProvider>
     </>
   )
 }
