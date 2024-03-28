@@ -12,7 +12,7 @@ import React from 'react';
 
 function Index() {
     const validation = () => {
-        return localStorage.getItem('validated') == 'yes'
+        return sessionStorage.getItem('validated') == 'yes'
     }
 
     return (

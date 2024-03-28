@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './styles.css'
 import {useNavigate} from "react-router-dom";
 import {Toast} from "../../utils/toast/Toast.tsx";
@@ -15,10 +15,9 @@ const Invite = () => {
 
     const validateCode = () => {
         if (inviteCode === 'qq11') {
-            localStorage.setItem('validated', 'yes');
+            sessionStorage.setItem('validated', 'yes');
             Toast.success("초대 코드 인증 완료!",{autoClose:500})
             setTimeout(() => {
-                navigate('/form');
                 window.location.reload()
             }, 1000);
         } else {
@@ -26,6 +25,10 @@ const Invite = () => {
             setTimeout(() => setShakeError(false), 1000);
         }
     }
+
+    useEffect(() => {
+        if (sessionStorage.getItem('validated') === 'yes') navigate('/form');
+    }, []);
 
     return (
         <div className="h-screen flex flex-col justify-center">
