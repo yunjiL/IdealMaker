@@ -1,5 +1,5 @@
 import {useLocation, useNavigate} from "react-router-dom"
-import {ConceptForm, ConceptFormResult, Answer} from "../../types/type"
+import {ConceptForm, ConceptFormResult, Answer, CustomMan, CustomWoman, Question} from "../../types/type"
 import {useEffect, useState} from "react";
 import {useForm} from "react-hook-form";
 import {getFormAPI, postFormResultAPI} from "../../apis/ResultAPI";
@@ -15,22 +15,18 @@ const IdealForm = () => {
 
 
     const [surveyList, setSurveyList] = useState<ConceptForm>({
-        gender: 0, questions: [], type: ""
-    });
-    const [selected, setSelected] = useState<ConceptFormResult>({
-        ageId: 0,
-        conceptId: 0,
-        eyeStyleId: 0,
-        faceShapeId: 0,
-        genderId: Number(genderId),
-        pupilColor: "#000000",
-        skinColorId: 0,
+        genderId: 0, questions: [], surveyType: ""
     });
 
 
     useEffect(() => {
         getFormAPI(surveyId, genderId).then((data) => {
-            setSurveyList({...surveyList, gender: data.genderId, questions: data.questions, type: data.type})
+            setSurveyList({...surveyList, genderId: data.genderId, questions: data.questions, surveyType: data.type})
+            console.log(data.questions)
+            data.questions.map((item:Question)=>{
+                if(item.type==="color") watch(item.title);
+                else watch(item.title+"Id");
+            })
         });
     }, []);
 
@@ -43,14 +39,12 @@ const IdealForm = () => {
                 {
                     props.answers?.map((item) => (
                         <Button
+                            {...register(selectedKey)}
                             key={item.id}
                             onClick={() => {
-                                const temp = selected;
-                                temp[selectedKey] = item.id;
-                                setSelected({...temp});
-                                setValue(selectedKey,item.id);
+                                setValue(selectedKey, item.id);
                             }}
-                            className={selected[selectedKey] === item.id ?
+                            className={getValues(selectedKey) === item.id ?
                                 "bg-lightpink rounded-3xl shadow-custom-outer px-[4%] py-[1%] mx-auto my-[3%] active:scale-90 duration-300"
                                 : "bg-bluegray rounded-3xl shadow-custom-outer px-[4%] py-[1%] mx-auto my-[3%] active:scale-90 duration-300"}> {item.value} </Button>
                     ))
@@ -63,27 +57,22 @@ const IdealForm = () => {
 
     {/* react form hook 설정 시작*/}
     const {
+        watch,
+        register,
         handleSubmit: onSubmit,
         setValue,
-    } = useForm<ConceptFormResult>({
-        mode: "onSubmit",
+        getValues,
+    } = useForm<ConceptFormResult|CustomMan|CustomWoman>({
+        mode: "onChange",
         defaultValues: {
             genderId: (Number)(genderId),
-            ageId: 0,
-            conceptId: 0,
-            eyeStyleId: 0,
-            faceShapeId: 0,
-            pupilColor: "#000000",
-            skinColorId: 0,
         },
     });
 
 
-    const handleRegistration = () => {
+    const handleRegistration = (data:ConceptFormResult|CustomMan|CustomWoman) => {
         //axios 통신 넣기
-        console.log(selected)
-        postFormResultAPI(selected, surveyId).then(()=>{
-            console.log("FIN")
+        postFormResultAPI(data, surveyId).then(()=>{
         });
         //link넣기
         navigate("/result");
@@ -99,13 +88,11 @@ const IdealForm = () => {
                             {survey.answers == null ?
                                 <SketchPicker
                                     className="mx-auto"
-                                    color={selected[survey.title]}
+                                    color={getValues(survey.title)}
                                     onChangeComplete={color=>{
-                                    const temp = selected;
                                     const k =survey.title;
-                                    console.log(k)
-                                    temp[k] = color.hex;
-                                    setSelected({...temp});
+                                    setValue(k,color.hex);
+
                                     document.body.style.background = color.hex;
                                 }}/>
                                 : <div>
