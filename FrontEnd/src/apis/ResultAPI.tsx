@@ -28,11 +28,11 @@ export const postFormResultAPI = async(data:ConceptFormResult|CustomMan|CustomWo
     try{
 
     let url = `/survey/${surveyType}`;
-    if(data.surveyType==="custom"){
+    if(surveyType==="custom"){
         url+=`/${data.genderId}`;
     }
-    console.log(url)
         const response = await axios.post(url, JSON.stringify(data))
+        console.log(response.data)
         return response.data
     }catch(error){
         handleApiError('결과를 가져오는 중 오류 발생 ', error)

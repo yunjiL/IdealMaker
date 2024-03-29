@@ -13,7 +13,6 @@ const IdealForm = () => {
     const location = useLocation();
     const {surveyId, genderId} = location.state;
 
-
     const [surveyList, setSurveyList] = useState<ConceptForm>({
         genderId: 0, questions: [], surveyType: ""
     });
@@ -34,8 +33,11 @@ const IdealForm = () => {
 
     const QuestionComponent = (props: { answers: Answer[] | null, title: string }) => {
         const selectedKey = props.title + "Id";
+
+        let length = props.answers?props.answers.length:0;
+        if(length>3) length = 2;
         return (
-            <div className="">
+            <div className={`grid grid-cols-${length}`}>
                 {
                     props.answers?.map((item) => (
                         <Button
@@ -72,7 +74,8 @@ const IdealForm = () => {
 
     const handleRegistration = (data:ConceptFormResult|CustomMan|CustomWoman) => {
         //axios 통신 넣기
-        postFormResultAPI(data, surveyId).then(()=>{
+        postFormResultAPI(data, surveyId).then((response)=>{
+            console.log(response)
         });
         //link넣기
         navigate("/result");
