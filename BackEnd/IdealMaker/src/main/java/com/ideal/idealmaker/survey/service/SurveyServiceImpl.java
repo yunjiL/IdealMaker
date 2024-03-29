@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import com.ideal.idealmaker.component.domain.Gender;
+import com.ideal.idealmaker.ideal.repository.AnimalTypeRepository;
 import com.ideal.idealmaker.ideal.repository.IdealRepository;
 import com.ideal.idealmaker.survey.dto.*;
 import com.ideal.idealmaker.survey.mapper.SurveyMapper;
@@ -28,6 +29,7 @@ public class SurveyServiceImpl implements SurveyService {
 	private final MakeUpRepository makeUpRepository;
 	private final SkinColorRepository skinColorRepository;
 	private final IdealRepository idealRepository;
+	private final AnimalTypeRepository animalTypeRepository;
 
 	@Override
 	public SurveyListDto readSurveyConceptList(Integer genderId) {
@@ -74,7 +76,7 @@ public class SurveyServiceImpl implements SurveyService {
 	public SurveyResultDto readSurveyResult(Long idealId) {
 		SurveyResultDto surveyResultDto = new SurveyResultDto();
 		String url = idealRepository.getById(idealId).getIdealURL();
-		String animalType = "";
+		String animalType = idealRepository.getById(idealId).getAnimalType().getType();
 		surveyResultDto.setIdealUrl(url);
 		surveyResultDto.setAnimalType(animalType);
 		return surveyResultDto;
