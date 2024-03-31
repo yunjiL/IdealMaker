@@ -1,6 +1,6 @@
 package com.ideal.idealmaker.gallery.service;
 
-import com.ideal.idealmaker.gallery.data.ImageDTO;
+import com.ideal.idealmaker.gallery.dto.ImageDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

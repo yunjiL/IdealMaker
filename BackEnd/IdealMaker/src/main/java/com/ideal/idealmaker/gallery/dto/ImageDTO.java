@@ -1,7 +1,7 @@
-package com.ideal.idealmaker.gallery.data;
+package com.ideal.idealmaker.gallery.dto;
 
 import lombok.*;
-
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder

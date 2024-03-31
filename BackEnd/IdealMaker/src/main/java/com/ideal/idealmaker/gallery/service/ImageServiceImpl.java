@@ -2,14 +2,12 @@ package com.ideal.idealmaker.gallery.service;
 
 import com.ideal.idealmaker.exception.ExceptionMessage;
 import com.ideal.idealmaker.exception.IllegalExtensionException;
-import com.ideal.idealmaker.gallery.data.ImageDTO;
+import com.ideal.idealmaker.gallery.dto.ImageDTO;
 import com.ideal.idealmaker.gallery.repository.ImageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class ImageServiceImpl implements ImageService {

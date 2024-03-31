@@ -1,6 +1,6 @@
 package com.ideal.idealmaker.gallery.controller;
 
-import com.ideal.idealmaker.gallery.data.ImageDTO;
+import com.ideal.idealmaker.gallery.dto.ImageDTO;
 import com.ideal.idealmaker.gallery.service.ImageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

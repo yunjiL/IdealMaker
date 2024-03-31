@@ -12,6 +12,7 @@ import com.ideal.idealmaker.component.domain.HairStyle;
 import com.ideal.idealmaker.component.domain.MakeUp;
 import com.ideal.idealmaker.component.domain.SkinColor;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -32,6 +33,7 @@ import lombok.NoArgsConstructor;
 public class IdealCharacter {
 
 	@Id
+	@Column(name = "character_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 

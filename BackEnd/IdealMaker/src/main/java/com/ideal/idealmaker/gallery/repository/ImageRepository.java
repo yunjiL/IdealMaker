@@ -1,6 +1,6 @@
 package com.ideal.idealmaker.gallery.repository;
 
-import com.ideal.idealmaker.gallery.data.ImageDTO;
+import com.ideal.idealmaker.gallery.dto.ImageDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
