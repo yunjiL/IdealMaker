@@ -29,16 +29,16 @@ public class ImageController {
     }
 
     // 동물상 필터링 검색
-    @GetMapping("/search")
+    @GetMapping("/search/animal-type")
     @ResponseStatus(HttpStatus.OK)
     public Page<ImageDTO> findByAnimalType(@RequestParam String animalType, Pageable pageable) {
         return imageService.findByAnimalType(animalType, pageable);
     }
 
     // 성별 필터링 검색
-    @GetMapping("/search")
+    @GetMapping("/search/gender")
     @ResponseStatus(HttpStatus.OK)
-    public Page<ImageDTO> findByGenderId(@RequestParam int genderId, Pageable pageable) {
+    public Page<ImageDTO> findByGenderId(@RequestParam Integer genderId, Pageable pageable) {
         return imageService.findByGenderId(genderId, pageable);
     }
 }

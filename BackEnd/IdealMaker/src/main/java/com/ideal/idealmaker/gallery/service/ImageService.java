@@ -8,5 +8,5 @@ public interface ImageService {
     Page<ImageDTO> findAllImages(Pageable pageable);
     ImageDTO findImageById(Long idealId);
     Page<ImageDTO> findByAnimalType(String animalType, Pageable pageable);
-    Page<ImageDTO> findByGenderId(int genderId, Pageable pageable);
+    Page<ImageDTO> findByGenderId(Integer genderId, Pageable pageable);
 }
