@@ -40,7 +40,7 @@ public class CustomWomanMapper {
 	private final HairLengthRepository hairLengthRepository;
 	private final MakeUpRepository makeUpRepository;
 
-	public IdealCharacter CustomWomanDtoToEntity(CustomWomanDto customWomanDto){
+	public IdealCharacter CustomWomanDtoToEntity(CustomWomanDto customWomanDto) {
 		Gender gender = genderRepository.getById(customWomanDto.getGenderId());
 		Age age = ageRepository.getById(customWomanDto.getAgeId());
 		Face face = faceRepository.getById(customWomanDto.getFaceShapeId());
