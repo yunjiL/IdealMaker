@@ -42,7 +42,7 @@ public class DalleController {
 		if (imageUrl != null) {
 			log.debug(">>>>>>"+characterId + " " + imageUrl);
 			//사진을 S3 서버에 저장
-			FileInfoDto fileInfo = fileS3UploadService.uploadImageURL(characterId.toString(),imageUrl);
+			FileInfoDto fileInfo = fileS3UploadService.uploadImageURL(Integer.toString(characterId),imageUrl);
 
 			//동물상 PK를 가져오기
 			Long animalFaceId = conceptDto.getEyeStyleId().longValue();
@@ -50,7 +50,7 @@ public class DalleController {
 			//이상형 테이블에 저장을 하고 ideal_id를 반환
 			Long idealId = dalleService.saveImage(characterId,animalFaceId,fileInfo);
 
-			//동물상을 animalType 테이블에 저장
+			//동물상 테이블에 choose_Num 업데이트
 			dalleService.updateAnimalType(animalFaceId);
 
 			return ResponseEntity.ok().body(idealId);
@@ -94,8 +94,8 @@ public class DalleController {
 		//프롬프트 생성
 		String prompt = dalleService.makeCustomWoman(customWomanDto);
 		log.debug(prompt);
-
 		//사진 생성
+
 		String imageUrl = dalleService.makeDalleImage(prompt);
 		if (imageUrl != null) {
 			//사진을 S3 서버에 저장
