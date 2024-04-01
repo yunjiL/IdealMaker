@@ -1,8 +1,7 @@
-package com.ideal.idealmaker.worldcup.service.impl;
+package com.ideal.idealmaker.worldcup.service;
 
 import com.ideal.idealmaker.worldcup.dto.WorldcupDTO;
 import com.ideal.idealmaker.worldcup.repository.WorldcupRepository;
-import com.ideal.idealmaker.worldcup.service.WorldcupService;
 import org.springframework.stereotype.Service;
 import java.util.Collections;
 import java.util.List;
