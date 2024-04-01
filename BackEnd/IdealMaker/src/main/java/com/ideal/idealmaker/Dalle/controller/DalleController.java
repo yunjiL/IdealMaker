@@ -29,7 +29,7 @@ public class DalleController {
 
 	@PostMapping("/concept")
 	public ResponseEntity<?> getConcept(@RequestBody ConceptDto conceptDto) {
-		//db에 conceptDto 저장하면서 ideal_pk 반환
+		//db에 conceptDto 저장하면서 이상형 특징 테이블에서 character_id로 반환
 		Integer characterId = dalleService.savePromptDTO(conceptDto);
 
 		//프롬프트 생성
@@ -38,13 +38,16 @@ public class DalleController {
 
 		//사진 생성
 		String imageUrl = dalleService.makeDalleImage(prompt);
-		log.debug(imageUrl);
 
 		if (imageUrl != null) {
-			//사진을 S3 서버에 저장
 			log.debug(">>>>>>"+characterId + " " + imageUrl);
+			//사진을 S3 서버에 저장
 			FileInfoDto fileInfo = fileS3UploadService.uploadImageURL(characterId.toString(),imageUrl);
+
+			//동물상 PK를 가져오기
 			Long animalFaceId = conceptDto.getEyeStyleId().longValue();
+
+			//이상형 테이블에 저장을 하고 ideal_id를 반환
 			Long idealId = dalleService.saveImage(characterId,animalFaceId,fileInfo);
 
 			//동물상을 animalType 테이블에 저장
