@@ -2,13 +2,16 @@ import {useLocation, useNavigate} from "react-router-dom"
 import {ConceptForm, ConceptFormResult, Answer, CustomMan, CustomWoman, Question} from "../../types/type"
 import {useEffect, useState} from "react";
 import {useForm} from "react-hook-form";
-import {getFormAPI, postFormResultAPI} from "../../apis/ResultAPI";
+import {getFormAPI} from "../../apis/ResultAPI";
 import {Button} from "flowbite-react";
 import {SketchPicker} from "react-color";
-
+// import {useQuery} from "@tanstack/react-query";
+// import Loading from "../../components/loading/Loading.tsx";
 const IdealForm = () => {
 
     {/* 변수 선언 시작 */}
+
+
     const navigate = useNavigate();
     const location = useLocation();
     const {surveyId, genderId} = location.state;
@@ -28,7 +31,11 @@ const IdealForm = () => {
         });
     }, []);
 
-    {/* 변수 선언 끝 */}
+    const handleRegistration = (data:ConceptFormResult|CustomMan|CustomWoman) => {
+    // const{data:number, isLoading} = useQuery({queryKey:["result"], queryFn:()=>postFormResultAPI(data, surveyId)})
+    // if(isLoading) return <Loading/>
+    navigate("/result", {state: {idealId:data}});
+    };
 
     const QuestionComponent = (props: { answers: Answer[] | null, title: string }) => {
         const selectedKey = props.title + "Id";
@@ -68,13 +75,6 @@ const IdealForm = () => {
         },
     });
 
-
-    const handleRegistration = (data:ConceptFormResult|CustomMan|CustomWoman) => {
-        //axios 통신 넣기
-        postFormResultAPI(data, surveyId).then((response)=>{
-            navigate("/result", {state: {idealId:response}});
-        });
-    };
 
     {/* react form hook 설정 끝*/}
 
