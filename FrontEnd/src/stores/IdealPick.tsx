@@ -6,24 +6,20 @@ export const useIdealPickStore = create<IdealPickState>()(
    devtools(
     persist(
         (set,get) => ({
-            examples: [
-                { id: 0, name: 'a' },
-                { id: 1, name: 'b' },
-                { id: 2, name: 'c' },
-                { id: 3, name: 'd' },
-            ],
-            setExamples: (examples:Example[] | null) => {
+            examples: [],
+            setExamples: (examples:Example[]) => {
                 const currentWinner = get().winner;
                 if ((examples === null || examples.length == 0) && currentWinner && currentWinner.length > 0) {
                     set({ examples: currentWinner, winner: null });
                     return;
-                }
-                if (examples !== null) {
+                } else {
                     set({ examples });
                 }
+                // if (examples.length==0 && currentWinner === null ) {
+                // }
             },
             removeExample: (exampleToRemove: Example) => {
-                const updatedExamples = get().examples.filter(example => example.id !== exampleToRemove.id);
+                const updatedExamples = get().examples.filter(example => example?.idealId !== exampleToRemove.idealId);
                 set({ examples: updatedExamples });
             },
             winner: null,
