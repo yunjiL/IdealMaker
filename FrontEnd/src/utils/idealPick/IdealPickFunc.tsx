@@ -31,6 +31,17 @@ export const buttonBG = (side:string) => {
 }
 
 export const animalPic = (animal:string) => {
-    const baseURL = "src/assets/images/"
-    return `${baseURL}${animal}.webp`
+    switch (animal) {
+        case '토끼상':
+            return "src/assets/images/rabbit.webp"
+        case '늑대상':
+            return "src/assets/images/wolf.webp"
+        case '강아지상':
+            return "src/assets/images/dog.webp"
+        case '사슴상':
+            return "src/assets/images/deer.webp"
+        case '고양이상':
+            return "src/assets/images/cat.webp"
+
+    }
 }

@@ -9,6 +9,7 @@ import IdealForm from '../../pages/form/IdealForm.tsx';
 import IdealPick from "../../pages/idealPick/IdealPick.tsx";
 import Invite from "../../pages/invite/Invite.tsx";
 import React from 'react';
+import IdealGallery from "../../pages/gallery/IdealGallery.tsx";
 
 function Index() {
     const validation = () => {
@@ -17,7 +18,7 @@ function Index() {
 
     return (
       <MainLayout>
-        <BodySection className="scrollBar">
+        <BodySection className="scrollBar max-screen">
             <Routes>
                 <Route path="/" element={<IdealMain/>}/>
                 <Route path="/invite" element={<Invite/>}/>
@@ -28,6 +29,7 @@ function Index() {
                     <Route path="/result" element={<IdealResult/>}/>
                     <Route path="/form" element={<IdealBasicForm/>}/>
                     <Route path="/IdealForm" element={<IdealForm />}/>
+                    <Route path="/gallery" element={<IdealGallery/>}/>
                 </React.Fragment>
                 )}
                 {/* 밑은 다른 주소로 접근 방지용 */}

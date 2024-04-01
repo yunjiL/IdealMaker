@@ -35,14 +35,16 @@ const Invite = () => {
             <div>
                 <p className="text-center text-[300%]">초대코드 입력</p>
             </div>
-            <div className="flex justify-center">
+            <div className="flex justify-evenly justify-center">
                 <input
-                    className={`font-black w-[80%] rounded-2xl shadow-custom-inner p-2 ${shakeError ? 'shake-animation' : ''}`}
+                    className={`font-black w-[75%] rounded-2xl shadow-custom-inner p-2 ${shakeError ? 'shake-animation' : ''}`}
                     placeholder="초대코드를 입력해주세요."
                     onChange={(e) => setInviteCode(e.target.value)}
                     onKeyDown={handleKeyPress}
                     value={inviteCode}
                 />
+                {/*<button className="w-[15%] bg-lightpink p-2 shadow-custom-outer rounded-2xl hover:bg-bluegray active:scale-90 duration-300"*/}
+                {/*        onClick={validateCode}>확인</button>*/}
             </div>
             {shakeError ? (<p className="text-[#FF0023] text-center">초대코드를 다시 입력해주세요.</p>)
                          :(<div className="invisible">fix</div>)}

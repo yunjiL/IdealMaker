@@ -55,8 +55,10 @@ export interface ConceptFormResult{
 
 /* 이상형 월드컵 */
 export interface Example {
-    id: number;
-    name: string;
+    animalType: string;
+    genderId: number;
+    idealId: number;
+    idealURL: string;
 }
 
 export interface IdealPickState {
@@ -65,4 +67,62 @@ export interface IdealPickState {
     removeExample: (example: Example) => void;
     winner: Example[] | null;
     setWinner: (winner: Example) => void;
+}
+
+export interface ResultData {
+    idealUrl : string;
+    animalType: string;
+}
+
+
+
+
+
+export interface galleryType {
+    content: galleryContent[];
+    pageable: Pageable;
+    last: boolean;
+    totalPages: number;
+    totalElements: number;
+    size: number;
+    number: number;
+    sort: Sort;
+    first: boolean;
+    numberOfElements: number;
+    empty: boolean;
+}
+
+export interface galleryContent {
+    idealId: number;
+    idealURL: string;
+    animalType: AnimalType;
+    genderId: GenderId;
+}
+
+enum AnimalType {
+    Rabbit = "토끼상",
+    Wolf = "늑대상",
+    Deer = "사슴상",
+    Cat = "고양이상",
+    Dog = "강아지상"
+}
+
+enum GenderId {
+    Male = 1,
+    Female = 2
+}
+
+interface Pageable {
+    pageNumber: number;
+    pageSize: number;
+    sort: Sort;
+    offset: number;
+    paged: boolean;
+    unpaged: boolean;
+}
+
+interface Sort {
+    empty: boolean;
+    sorted: boolean;
+    unsorted: boolean;
 }

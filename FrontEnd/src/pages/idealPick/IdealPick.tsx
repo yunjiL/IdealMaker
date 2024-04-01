@@ -4,12 +4,16 @@ import Trophy from "../../assets/icons/Trophy.tsx";
 import {dynamicClass, IdealPickFunc} from "../../utils/idealPick/IdealPickFunc.tsx";
 import {Example} from "../../types/type";
 import {IdealPickDiv} from "../../components/idealPick/IdealPickDiv.tsx";
+import {useLocation} from "react-router-dom";
+import {getWorldCupAPI} from "../../apis/WorldCupAPI.tsx";
 
 const IdealPick = () => {
     const { examples, removeExample, setExamples,winner, setWinner } = useIdealPickStore();
     const [newExamples, setNewExamples] = useState<Example[]>([]);
     const [selected, setSelected] = useState('none');
     const [isChoosing, setIsChoosing] = useState(false);
+    const location = useLocation();
+    const { gender } = location.state;
 
     const selectRandomExamples = () => {
         const shuffled = [...examples].sort(() => 0.5 - Math.random());
@@ -33,10 +37,18 @@ const IdealPick = () => {
     }
 
     useEffect(() => {
-        if (examples===null||examples.length==0) {
-            setExamples(examples)
+        if (!examples||examples.length==0 && winner===null) {
+            getWorldCupAPI(gender).then((data)=>{
+                setExamples(data)
+                console.log(data)
+            })
+            setTimeout(()=> {
+                window.location.reload()
+            },100)
         } else if (examples.length >= 2 && !isChoosing) {
             selectRandomExamples()
+        } else {
+            setExamples(examples)
         }
     }, [isChoosing]);
 
@@ -56,19 +68,19 @@ const IdealPick = () => {
             <div className={"flex flex-col flex-grow"}>
             {examples.length == 1 ? (
                 <div className="w-full">
-                    <IdealPickDiv name={examples[0].name} show={false} side={'none'}/>
+                    <IdealPickDiv pic={examples[0]?.idealURL} name={examples[0].animalType} show={false} side={'none'}/>
                 </div>
             ) : (
                 <div id="selection" className={`flex-grow flex ${selected === 'right' ? 'flex-row-reverse' : ''}`}>
                     {(selected === 'none' || selected === 'left') && (
                         <div id="left" className={`bg-[#FFDBFB] ${dynamicClass(selected,'left')}`} onClick={() => Choose('left')}>
-                            <IdealPickDiv name={newExamples[0]?.name} show={true} side={'left'}/>
+                            <IdealPickDiv pic={newExamples[0]?.idealURL} name={newExamples[0]?.animalType} show={true} side={'left'}/>
                         </div>
                     )}
 
                     {(selected === 'none' || selected === 'right') && (
                         <div id="right" className={`bg-[#D1F7FF] ${dynamicClass(selected,'right')}`} onClick={() => Choose('right')}>
-                            <IdealPickDiv name={newExamples[1]?.name} show={true} side={'right'}/>
+                            <IdealPickDiv pic={newExamples[1]?.idealURL} name={newExamples[1]?.animalType} show={true} side={'right'}/>
                         </div>
                     )}
                 </div>
