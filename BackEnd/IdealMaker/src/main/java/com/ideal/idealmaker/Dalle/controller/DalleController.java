@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ideal.idealmaker.Dalle.dto.ConceptDto;
@@ -17,6 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @Slf4j
+@RequestMapping("/api/survey")
 public class DalleController {
 
 	@Autowired
@@ -25,7 +27,7 @@ public class DalleController {
 	@Autowired
 	private FileS3UploadService fileS3UploadService;
 
-	@PostMapping("/survey/concept")
+	@PostMapping("/concept")
 	public ResponseEntity<?> getConcept(@RequestBody ConceptDto conceptDto) {
 		//db에 conceptDto 저장하면서 ideal_pk 반환
 		Integer characterId = dalleService.savePromptDTO(conceptDto);
@@ -55,7 +57,7 @@ public class DalleController {
 
 	}
 
-	@PostMapping("/survey/custom/1")
+	@PostMapping("/custom/1")
 	public ResponseEntity<?> getCustomMan(@RequestBody CustomManDto customManDto) {
 		//db에 customManDto 저장하면서 ideal_pk 반환
 		Integer characterId = dalleService.savePromptDTO(customManDto);
@@ -81,7 +83,7 @@ public class DalleController {
 		}
 	}
 
-	@PostMapping("/survey/custom/2")
+	@PostMapping("/custom/2")
 	public ResponseEntity<?> getCustomWoman(@RequestBody CustomWomanDto customWomanDto) {
 		//db에 customWomanDto 저장하면서 ideal_pk 반환
 		Integer characterId = dalleService.savePromptDTO(customWomanDto);
