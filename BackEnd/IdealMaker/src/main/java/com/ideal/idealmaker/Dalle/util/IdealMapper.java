@@ -16,7 +16,7 @@ public class IdealMapper {
 	private final IdealCharacterRepository idealCharacterRepository;
 	private final AnimalTypeRepository animalTypeRepository;
 
-	public Ideal toEntity(Integer idealId,Long animalTypeId, String url) {
+	public Ideal toEntity(Integer idealId, Long animalTypeId, String url) {
 		IdealCharacter idealCharacter = idealCharacterRepository.getById(idealId);
 		AnimalType animalType = animalTypeRepository.getById(animalTypeId);
 		return Ideal.builder().idealCharacter(idealCharacter).idealURL(url).idealRank(0).animalType(animalType).build();
