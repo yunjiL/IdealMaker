@@ -4,7 +4,7 @@ import {BodySection, MainLayout} from "./styles.tsx";
 import IdealMain from "../../pages/main/IdealMain.tsx";
 import Loading from "../../components/loading/Loading.tsx";
 import IdealResult from "../../pages/result/IdealResult.tsx";
-import IdealBasicForm from '../../pages/form/IdealBasicForm.tsx';
+import IdealBasicFormPage from '../../pages/form/IdealBasicFormPage.tsx';
 import IdealForm from '../../pages/form/IdealForm.tsx';
 import IdealPick from "../../pages/idealPick/IdealPick.tsx";
 import Invite from "../../pages/invite/Invite.tsx";
@@ -27,7 +27,7 @@ function Index() {
                 <React.Fragment>
                     <Route path="/loading" element={<Loading/>}/>
                     <Route path="/result" element={<IdealResult/>}/>
-                    <Route path="/form" element={<IdealBasicForm/>}/>
+                    <Route path="/form" element={<IdealBasicFormPage/>}/>
                     <Route path="/IdealForm" element={<IdealForm />}/>
                     <Route path="/gallery" element={<IdealGallery/>}/>
                 </React.Fragment>

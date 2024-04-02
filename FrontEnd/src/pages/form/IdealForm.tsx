@@ -6,7 +6,7 @@ import {getFormAPI, postFormResultAPI} from "../../apis/ResultAPI";
 import {Button} from "flowbite-react";
 import {SketchPicker} from "react-color";
 import Loading from "../../components/loading/Loading.tsx";
-const IdealForm = () => {
+const IdealFormPage = () => {
 
     {/* 변수 선언 시작 */}
     const navigate = useNavigate();
@@ -54,8 +54,8 @@ const IdealForm = () => {
                                 setValue(selectedKey, item.id);
                             }}
                             className={getValues(selectedKey) === item.id ?
-                                "bg-lightpink rounded-3xl shadow-custom-outer p-2 w-[55%] mx-auto my-[10%] active:scale-90 duration-300"
-                                : "bg-bluegray rounded-3xl shadow-custom-outer p-2 w-[55%] mx-auto my-[10%] active:scale-90 duration-300"}> {item.value} </Button>
+                                "pink-button"
+                                : "gray-button"}> {item.value} </Button>
                     ))
                 }
             </div>
@@ -117,4 +117,4 @@ const IdealForm = () => {
     )
 }
 
-export default IdealForm
+export default IdealFormPage
