@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ideal.idealmaker.exception.ExceptionMessage;
 import com.ideal.idealmaker.exception.IllegalTypeException;
 import com.ideal.idealmaker.survey.dto.SurveyListDto;
 import com.ideal.idealmaker.survey.dto.SurveyResultDto;

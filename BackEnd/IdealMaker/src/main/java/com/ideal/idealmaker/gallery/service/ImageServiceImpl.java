@@ -1,15 +1,12 @@
 package com.ideal.idealmaker.gallery.service;
 
-import com.ideal.idealmaker.exception.ExceptionMessage;
-import com.ideal.idealmaker.exception.IllegalExtensionException;
 import com.ideal.idealmaker.gallery.util.ImageMapper;
-import com.ideal.idealmaker.ideal.domain.Ideal;
 import com.ideal.idealmaker.gallery.dto.ImageDTO;
 import com.ideal.idealmaker.gallery.repository.ImageRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
