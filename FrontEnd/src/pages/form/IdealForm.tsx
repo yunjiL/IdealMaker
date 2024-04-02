@@ -6,7 +6,7 @@ import {getFormAPI, postFormResultAPI} from "../../apis/ResultAPI";
 import {Button} from "flowbite-react";
 import {SketchPicker} from "react-color";
 import Loading from "../../components/loading/Loading.tsx";
-const IdealForm = () => {
+const IdealFormPage = () => {
 
     {/* 변수 선언 시작 */}
     const navigate = useNavigate();
@@ -117,4 +117,4 @@ const IdealForm = () => {
     )
 }
 
-export default IdealForm
+export default IdealFormPage
