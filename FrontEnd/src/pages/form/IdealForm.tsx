@@ -2,19 +2,19 @@ import {useLocation, useNavigate} from "react-router-dom"
 import {ConceptForm, ConceptFormResult, Answer, CustomMan, CustomWoman, Question} from "../../types/type"
 import {useEffect, useState} from "react";
 import {useForm} from "react-hook-form";
-import {getFormAPI} from "../../apis/ResultAPI";
+import {getFormAPI, postFormResultAPI} from "../../apis/ResultAPI";
 import {Button} from "flowbite-react";
 import {SketchPicker} from "react-color";
-// import {useQuery} from "@tanstack/react-query";
-// import Loading from "../../components/loading/Loading.tsx";
+import Loading from "../../components/loading/Loading.tsx";
 const IdealForm = () => {
 
     {/* 변수 선언 시작 */}
-
-
     const navigate = useNavigate();
     const location = useLocation();
     const {surveyId, genderId} = location.state;
+
+    const [isLoading, setIsLoading] = useState(false);
+
 
     const [surveyList, setSurveyList] = useState<ConceptForm>({
         genderId: 0, questions: [], surveyType: ""
@@ -32,9 +32,12 @@ const IdealForm = () => {
     }, []);
 
     const handleRegistration = (data:ConceptFormResult|CustomMan|CustomWoman) => {
-    // const{data:number, isLoading} = useQuery({queryKey:["result"], queryFn:()=>postFormResultAPI(data, surveyId)})
-    // if(isLoading) return <Loading/>
-    navigate("/result", {state: {idealId:data}});
+        setIsLoading(true);
+        postFormResultAPI(data, surveyId).then((response)=>{
+            setIsLoading(false);
+            navigate("/result", {state: {idealId:response}});
+        });
+
     };
 
     const QuestionComponent = (props: { answers: Answer[] | null, title: string }) => {
@@ -77,7 +80,9 @@ const IdealForm = () => {
 
 
     {/* react form hook 설정 끝*/}
-
+    if(isLoading){
+        return(<Loading/>);
+    }
     return (<div className="flex">
             <form onSubmit={onSubmit(handleRegistration)} className="w-full" method="GET">
                 {surveyList?.questions?.map(survey => {
