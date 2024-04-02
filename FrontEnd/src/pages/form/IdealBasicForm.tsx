@@ -69,8 +69,8 @@ const IdealBasicForm = () => {
                 }} 
 
             className={item.id===selectedIdx?
-                "bg-lightpink rounded-3xl shadow-custom-outer  p-2 w-[55%] mx-auto my-[5%] active:scale-90 duration-300"
-                :"bg-bluegray rounded-3xl shadow-custom-outer  p-2 w-[55%] mx-auto my-[5%] active:scale-90 duration-300"} >{item.meaning}</Button>
+                "pink-button"
+                :"gray-button"} >{item.meaning}</Button>
                 )}
                 </>
             )

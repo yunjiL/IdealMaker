@@ -54,8 +54,8 @@ const IdealForm = () => {
                                 setValue(selectedKey, item.id);
                             }}
                             className={getValues(selectedKey) === item.id ?
-                                "bg-lightpink rounded-3xl shadow-custom-outer p-2 w-[55%] mx-auto my-[10%] active:scale-90 duration-300"
-                                : "bg-bluegray rounded-3xl shadow-custom-outer p-2 w-[55%] mx-auto my-[10%] active:scale-90 duration-300"}> {item.value} </Button>
+                                "pink-button"
+                                : "gray-button"}> {item.value} </Button>
                     ))
                 }
             </div>

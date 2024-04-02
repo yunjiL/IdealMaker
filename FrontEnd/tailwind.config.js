@@ -17,5 +17,17 @@ export default {
     },
     extend: {},
   },
-  plugins: [require("daisyui")],
+  plugins: [require("daisyui"),
+    ({ addUtilities }) => {
+      addUtilities({
+        ".gray-button": {
+          "@apply bg-bluegray rounded-3xl shadow-custom-outer  p-2 w-[55%] mx-auto my-[5%] active:scale-90 duration-300":
+              "",
+        },
+        ".pink-button": {
+          "@apply bg-lightpink rounded-3xl shadow-custom-outer  p-2 w-[55%] mx-auto my-[5%] active:scale-90 duration-300":""
+        }
+      });
+    },
+  ],
 }
