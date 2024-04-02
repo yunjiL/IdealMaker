@@ -1,17 +1,20 @@
 import {useEffect, useState} from "react";
 import {Button} from "./styles.tsx";
-import {getGalleryAPI} from "../../apis/GalleryAPI.tsx";
+import {getGalleryAPI, getGalleryGenderAPI, getGalleryTypeAPI} from "../../apis/GalleryAPI.tsx";
 import {galleryContent} from "../../types/type";
 
 const IdealGallery = () => {
     const [selectedType, setSelectedType] = useState('')
-    const [selectedGender, setSelectedGender] = useState('')
     const [gallery, setGallery] = useState<galleryContent[]>([])
     const handleType = (option:string) => {
         setSelectedType(currentType=> currentType === option ? '' : option)
-    }
-    const handleGender = (option:string) => {
-        setSelectedGender(currentGender => currentGender === option ? '' : option)
+        if(option === '') {
+            getGalleryAPI().then((data)=>{setGallery(data.content)})
+        } else if (option === 'Man' || option ==='Woman') {
+            getGalleryGenderAPI(option).then((data)=>{setGallery(data.content)})
+        } else {
+            getGalleryTypeAPI(option).then((data)=>{setGallery(data.content)})
+        }
     }
 
     useEffect(()=> {
@@ -23,15 +26,15 @@ const IdealGallery = () => {
     return (
         <div className="mt-[5%]">
             <div className="flex justify-center mb-[5%]">
-                <Button className={`${selectedType === 'wolf' ? 'bg-lightpink' : 'bg-bluegray'}`} onClick={()=>handleType('wolf')}>늑대상</Button>
-                <Button className={`${selectedType === 'rabbit' ? 'bg-lightpink' : 'bg-bluegray'}`} onClick={()=>handleType('rabbit')}>토끼상</Button>
-                <Button className={`${selectedType === 'deer' ? 'bg-lightpink' : 'bg-bluegray'}`} onClick={()=>handleType('deer')}>사슴상</Button>
-                <Button className={`${selectedType === 'dog' ? 'bg-lightpink' : 'bg-bluegray'}`} onClick={()=>handleType('dog')}>강아지상</Button>
-                <Button className={`${selectedType === 'cat' ? 'bg-lightpink' : 'bg-bluegray'}`} onClick={()=>handleType('cat')}>고양이상</Button>
+                <Button className={`${selectedType === '늑대상' ? 'bg-lightpink' : 'bg-bluegray'}`} onClick={()=>handleType('늑대상')}>늑대상</Button>
+                <Button className={`${selectedType === '토끼상' ? 'bg-lightpink' : 'bg-bluegray'}`} onClick={()=>handleType('토끼상')}>토끼상</Button>
+                <Button className={`${selectedType === '사슴상' ? 'bg-lightpink' : 'bg-bluegray'}`} onClick={()=>handleType('사슴상')}>사슴상</Button>
+                <Button className={`${selectedType === '강아지상' ? 'bg-lightpink' : 'bg-bluegray'}`} onClick={()=>handleType('강아지상')}>강아지상</Button>
+                <Button className={`${selectedType === '고양이상' ? 'bg-lightpink' : 'bg-bluegray'}`} onClick={()=>handleType('고양이상')}>고양이상</Button>
             </div>
             <div className="flex justify-center mb-[5%]">
-                <Button className={`${selectedGender === 'Man'? 'bg-lightpink':'bg-bluegray'}`} onClick={()=>handleGender('Man')}>남자</Button>
-                <Button className={`${selectedGender === 'Woman'? 'bg-lightpink':'bg-bluegray'}`} onClick={()=>handleGender('Woman')}>여자</Button>
+                <Button className={`${selectedType === 'Man'? 'bg-lightpink':'bg-bluegray'}`} onClick={()=>handleType('Man')}>남자</Button>
+                <Button className={`${selectedType === 'Woman'? 'bg-lightpink':'bg-bluegray'}`} onClick={()=>handleType('Woman')}>여자</Button>
             </div>
             <div className="grid grid-cols-3">
                 {gallery?.map((item)=> (

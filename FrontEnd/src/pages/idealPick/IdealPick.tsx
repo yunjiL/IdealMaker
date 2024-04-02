@@ -12,8 +12,7 @@ const IdealPick = () => {
     const [newExamples, setNewExamples] = useState<Example[]>([]);
     const [selected, setSelected] = useState('none');
     const [isChoosing, setIsChoosing] = useState(false);
-    const location = useLocation();
-    const { gender } = location.state;
+    const { gender } = useLocation().state;
 
     const selectRandomExamples = () => {
         const shuffled = [...examples].sort(() => 0.5 - Math.random());

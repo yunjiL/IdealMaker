@@ -1,16 +1,17 @@
 import {buttonBG} from "../../utils/idealPick/IdealPickFunc.tsx";
 import {Link, useNavigate} from "react-router-dom";
 
-interface props {
+interface PicProps {
     pic:string;
     name:string;
     show:boolean;
     side:string;
 }
 
-export const IdealPickDiv = ({pic, name, show, side}:props) => {
+export const IdealPickDiv = ({pic, name, show, side}:PicProps) => {
     const navigate = useNavigate()
     const moveHome = async () => {
+        sessionStorage.clear()
         navigate("/")
     }
 
