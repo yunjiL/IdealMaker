@@ -38,7 +38,6 @@ const IdealPick = () => {
         if (!examples||examples.length==0 && winner===null) {
             getWorldCupAPI(gender).then((data)=>{
                 setExamples(data)
-                console.log(data)
             })
             setTimeout(()=> {
                 window.location.reload()

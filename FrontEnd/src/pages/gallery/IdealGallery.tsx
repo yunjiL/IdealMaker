@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import {Button} from "./styles.tsx";
 import {getGalleryAPI, getGalleryGenderAPI, getGalleryTypeAPI} from "../../apis/GalleryAPI.tsx";
 import {galleryContent} from "../../types/type";
+import {Link} from "react-router-dom";
 
 const IdealGallery = () => {
     const [selectedType, setSelectedType] = useState('')
@@ -25,6 +26,9 @@ const IdealGallery = () => {
     console.log(gallery)
     return (
         <div className="mt-[5%]">
+            <div className="flex justify-center mb-[5%]">
+                <Link to="/" className="animate-bounce text-2xl">&gt;&gt; 홈으로 돌아가기 &lt;&lt;</Link>
+            </div>
             <div className="flex justify-center mb-[5%]">
                 <Button className={`${selectedType === '늑대상' ? 'bg-lightpink' : 'bg-bluegray'}`} onClick={()=>handleType('늑대상')}>늑대상</Button>
                 <Button className={`${selectedType === '토끼상' ? 'bg-lightpink' : 'bg-bluegray'}`} onClick={()=>handleType('토끼상')}>토끼상</Button>
