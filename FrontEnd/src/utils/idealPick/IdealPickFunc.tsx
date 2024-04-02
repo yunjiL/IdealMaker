@@ -1,3 +1,5 @@
+import JSConfetti from "js-confetti";
+
 export const IdealPickFunc = (amount: number) => {
     if (amount >16) return '32강'
     else if (amount <=16 && amount >8) return '16강'
@@ -45,3 +47,19 @@ export const animalPic = (animal:string) => {
 
     }
 }
+
+const jsConfetti = new JSConfetti();
+export const celebration = () => {
+    jsConfetti.addConfetti({
+        confettiColors: [
+            "#ff0a54",
+            "#ff477e",
+            "#ff7096",
+            "#ff85a1",
+            "#fbb1bd",
+            "#f9bec7",
+        ],
+        confettiRadius: 5,
+        confettiNumber: 500,
+    });
+};

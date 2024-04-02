@@ -15,8 +15,6 @@ export const useIdealPickStore = create<IdealPickState>()(
                 } else {
                     set({ examples });
                 }
-                // if (examples.length==0 && currentWinner === null ) {
-                // }
             },
             removeExample: (exampleToRemove: Example) => {
                 const updatedExamples = get().examples.filter(example => example?.idealId !== exampleToRemove.idealId);
