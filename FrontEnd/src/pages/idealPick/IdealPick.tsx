@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useIdealPickStore } from "../../stores/IdealPick.tsx";
 import Trophy from "../../assets/icons/Trophy.tsx";
-import {dynamicClass, IdealPickFunc} from "../../utils/idealPick/IdealPickFunc.tsx";
+import {celebration, dynamicClass, IdealPickFunc} from "../../utils/idealPick/IdealPickFunc.tsx";
 import {Example} from "../../types/type";
 import {IdealPickDiv} from "../../components/idealPick/IdealPickDiv.tsx";
 import {useLocation} from "react-router-dom";
@@ -13,7 +13,6 @@ const IdealPick = () => {
     const [selected, setSelected] = useState('none');
     const [isChoosing, setIsChoosing] = useState(false);
     const { gender } = useLocation().state;
-
     const selectRandomExamples = () => {
         const shuffled = [...examples].sort(() => 0.5 - Math.random());
         setNewExamples(shuffled.slice(0, 2));
@@ -66,6 +65,7 @@ const IdealPick = () => {
 
             <div className={"flex flex-col flex-grow"}>
             {examples.length == 1 ? (
+                celebration(),
                 <div className="w-full">
                     <IdealPickDiv pic={examples[0]?.idealURL} name={examples[0].animalType} show={false} side={'none'}/>
                 </div>
