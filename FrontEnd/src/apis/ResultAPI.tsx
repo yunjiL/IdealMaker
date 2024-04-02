@@ -12,6 +12,15 @@ export const getResultAPI = async (imageId:number) => {
     }
 }
 
+export const getResultRankAPI = async () => {
+    try {
+        const response = await axios.get('/ranking')
+        return response.data
+    } catch(error) {
+        handleApiError('동물상 이상형 순위 가져오는 중 오류 발생 ', error)
+    }
+}
+
 export const getFormAPI = async(surveyId:string, genderId:string)=>{
     try{
         const url = `/survey?type=${surveyId}&gender=${genderId}`;

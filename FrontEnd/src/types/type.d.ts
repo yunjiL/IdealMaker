@@ -126,3 +126,13 @@ interface Sort {
     sorted: boolean;
     unsorted: boolean;
 }
+
+export interface AnimalTypeRanking {
+    animalType: string;
+    animalImage: null | string;
+    chooseNum: number;
+}
+
+export interface AnimalRankingData {
+    animalTypeRanking: AnimalTypeRanking[];
+}
