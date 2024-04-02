@@ -31,7 +31,6 @@ export const postFormResultAPI = async(data:ConceptFormResult|CustomMan|CustomWo
     if(surveyType==="custom"){
         url+=`/${data.genderId}`;
     }
-        console.log("!!!! "+JSON.stringify(data))
         const response = await axios.post(url, JSON.stringify(data))
         return response.data
     }catch(error){
