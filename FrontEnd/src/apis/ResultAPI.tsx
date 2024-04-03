@@ -58,6 +58,7 @@ export const postFormResultAPI = async (data: ConceptFormResult | CustomMan | Cu
 
 // 에러 처리
 const handleApiError = (message: any, error: any) => {
+    console.error(`${message}: `, error);
     throw new Error(message);
 };
 
