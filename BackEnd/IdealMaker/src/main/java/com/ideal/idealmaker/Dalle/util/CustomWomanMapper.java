@@ -11,6 +11,7 @@ import com.ideal.idealmaker.component.domain.Face;
 import com.ideal.idealmaker.component.domain.Gender;
 import com.ideal.idealmaker.component.domain.HairLength;
 import com.ideal.idealmaker.component.domain.HairStyle;
+import com.ideal.idealmaker.component.domain.MakeUp;
 import com.ideal.idealmaker.component.domain.SkinColor;
 import com.ideal.idealmaker.ideal.domain.IdealCharacter;
 import com.ideal.idealmaker.survey.repository.AgeRepository;
@@ -50,6 +51,8 @@ public class CustomWomanMapper {
 		ClothStyle clothStyle = clothStyleRepository.getById(customWomanDto.getClothId());
 		HairStyle hairStyle = hairStyleRepository.getById(customWomanDto.getHairStyleId());
 		HairLength hairLength = hairLengthRepository.getById(customWomanDto.getHairLengthId());
+		MakeUp makeUp = makeUpRepository.getById(customWomanDto.getMakeUpId());
+
 		return IdealCharacter.builder()
 			.gender(gender)
 			.age(age)
@@ -60,6 +63,7 @@ public class CustomWomanMapper {
 			.clothStyle(clothStyle)
 			.hairStyle(hairStyle)
 			.hairLength(hairLength)
+			.makeUp(makeUp)
 			.build();
 	}
 }
