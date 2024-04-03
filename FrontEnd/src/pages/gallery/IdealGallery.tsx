@@ -23,7 +23,6 @@ const IdealGallery = () => {
            setGallery(data.content)
        })
     },[])
-    console.log(gallery)
     return (
         <div className="mt-[5%]">
             <div className="flex justify-center mb-[5%]">

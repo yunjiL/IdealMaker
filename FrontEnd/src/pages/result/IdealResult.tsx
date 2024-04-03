@@ -38,7 +38,7 @@ const IdealResult = () => {
             </div>
 
             <div className="flex justify-evenly mb-[6%]">
-                <AnimalRank animalType={result?.animalType ?? '늑대상'} chooseNum={null} width={100}/>
+                <AnimalRank animalType={result?.animalType ?? ''} chooseNum={null} width={100}/>
             </div>
 
             <div>
