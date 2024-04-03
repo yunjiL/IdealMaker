@@ -67,21 +67,25 @@ public class DalleController {
 
 		//프롬프트 생성
 		String prompt = dalleService.makeCustomMan(customManDto);
-		log.debug(prompt);
+		log.debug(">>>>>" + prompt);
 
 		try {
 			//사진 생성
 			String imageUrl = dalleService.makeDalleImage(prompt);
+
 			//사진을 S3 서버에 저장
 			log.debug(">>>>>>" + characterId + " " + imageUrl);
+			FileInfoDto fileInfo = fileS3UploadService.uploadImageURL(Integer.toString(characterId), imageUrl);
+
+			//동물상 PK를 가져오기
 			Long animalFaceId = customManDto.getEyeStyleId().longValue();
-			FileInfoDto fileInfo = fileS3UploadService.uploadImageURL(characterId.toString(), imageUrl);
+
+			//이상형 테이블에 저장을 하고 ideal_id를 반환
 			Long idealId = dalleService.saveImage(characterId, animalFaceId, fileInfo);
 
-			//동물상을 animalType 테이블에 저장
+			//동물상 테이블에 choose_Num 업데이트
 			dalleService.updateAnimalType(animalFaceId);
 			return ResponseEntity.ok().body(idealId);
-
 		} catch (Exception e) {
 			return ResponseEntity.notFound().build();
 		}
@@ -94,15 +98,20 @@ public class DalleController {
 
 		//프롬프트 생성
 		String prompt = dalleService.makeCustomWoman(customWomanDto);
-		log.debug(prompt);
+		log.info(">>>>>>" + prompt);
 
 		try {
 			//사진 생성
 			String imageUrl = dalleService.makeDalleImage(prompt);
+
 			//사진을 S3 서버에 저장
 			log.debug(">>>>>>" + characterId + " " + imageUrl);
+			FileInfoDto fileInfo = fileS3UploadService.uploadImageURL(Integer.toString(characterId), imageUrl);
+
+			//동물상 PK를 가져오기
 			Long animalFaceId = customWomanDto.getEyeStyleId().longValue();
-			FileInfoDto fileInfo = fileS3UploadService.uploadImageURL(characterId.toString(), imageUrl);
+
+			//이상형 테이블에 저장을 하고 ideal_id를 반환
 			Long idealId = dalleService.saveImage(characterId, animalFaceId, fileInfo);
 
 			//동물상을 animalType 테이블에 저장
