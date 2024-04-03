@@ -30,8 +30,8 @@ public class CustomWomanDto {
 	@JsonProperty("backgroundId")
 	private Integer backgroundId;
 
-	@JsonProperty("clothId")
-	private Integer clothId;
+	@JsonProperty("clothStyleId")
+	private Integer clothStyleId;
 
 	@JsonProperty("hairStyleId")
 	private Integer hairStyleId;

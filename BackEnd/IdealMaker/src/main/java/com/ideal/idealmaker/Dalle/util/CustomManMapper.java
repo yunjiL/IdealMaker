@@ -43,7 +43,7 @@ public class CustomManMapper {
 		SkinColor skinColor = skinColorRepository.getById(customManDto.getSkinColorId());
 		EyeStyle eyeStyle = eyeStyleRepository.getById(customManDto.getEyeStyleId());
 		Background background = backgroundRepository.getById(customManDto.getBackgroundId());
-		ClothStyle clothStyle = clothStyleRepository.getById(customManDto.getClothId());
+		ClothStyle clothStyle = clothStyleRepository.getById(customManDto.getClothStyleId());
 		HairStyle hairStyle = hairStyleRepository.getById(customManDto.getHairStyleId());
 		return IdealCharacter.builder()
 			.gender(gender)

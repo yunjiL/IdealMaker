@@ -48,7 +48,7 @@ public class CustomWomanMapper {
 		SkinColor skinColor = skinColorRepository.getById(customWomanDto.getSkinColorId());
 		EyeStyle eyeStyle = eyeStyleRepository.getById(customWomanDto.getEyeStyleId());
 		Background background = backgroundRepository.getById(customWomanDto.getBackgroundId());
-		ClothStyle clothStyle = clothStyleRepository.getById(customWomanDto.getClothId());
+		ClothStyle clothStyle = clothStyleRepository.getById(customWomanDto.getClothStyleId());
 		HairStyle hairStyle = hairStyleRepository.getById(customWomanDto.getHairStyleId());
 		HairLength hairLength = hairLengthRepository.getById(customWomanDto.getHairLengthId());
 		MakeUp makeUp = makeUpRepository.getById(customWomanDto.getMakeUpId());
