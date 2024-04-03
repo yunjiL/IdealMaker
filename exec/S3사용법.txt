@@ -1,0 +1,1 @@
+S3 : [https://s3.console.aws.amazon.com](https://s3.console.aws.amazon.com/) 사용 이유: 이미지 활용성이 높은 서비스 특성상 확장성, 내구성에 장점을 가지고 있는 s3 서버를 통해 파일 데이터를 관리한다.
