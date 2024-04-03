@@ -18,8 +18,8 @@ const BasicFormData = [
         formType: Q_TYPE.SURVEY,
         question: "어떤 모드로 하고 싶나용?",
         answer: [
-            {id: "concept", meaning: "나는 쉽고 빠르게 이상형을 보고 시퍼!!!"},
-            {id: "custom", meaning: "나는 완벽한 내 이상형을 보고 시퍼!!!"},
+            {id: "concept", meaning: "나는 쉽고 빠르게 이상형을 보고싶구나..."},
+            {id: "custom", meaning: "나는 완벽한 이상형을 보고싶구나..."},
         ]
     },
     {
@@ -38,7 +38,9 @@ const IdealBasicFormPage = () => {
     const navigate = useNavigate();
 
     const [nowIdx, setNowIdx] = useState(0);
-    const [clicked, setClicked] = useState(false);
+    const [isNotChoice, setIsNotChoice] = useState(false);
+
+    const [clickedValue, setClickedValue] = useState("");
 
     const {
         handleSubmit: onSubmit,
@@ -52,7 +54,12 @@ const IdealBasicFormPage = () => {
         },
     });
     const handleSubmit = (data: BasicForm) => {
-        navigate("/IdealForm", {state: {surveyId: data.surveyId, genderId: data.genderId}});
+        if(clickedValue==="") {
+            setIsNotChoice(true);
+        }else{
+            navigate("/IdealForm", {state: {surveyId: data.surveyId, genderId: data.genderId}});
+        }
+
     };
     return (
         <div className="flex">
@@ -65,11 +72,16 @@ const IdealBasicFormPage = () => {
                                 key={item.id}
                                 questionText={item.meaning}
                                 onClick={() => {
+                                    setIsNotChoice(false);
                                     setValue(BasicFormData[nowIdx].formType, `${item.id}`)
-                                    setClicked(!clicked)
+                                    setClickedValue(item.id)
                                 }}
-                                style={item.id === getValues(BasicFormData[nowIdx].formType) ? "pink-button" : "gray-button"}/>
+                                style={item.id === getValues(BasicFormData[nowIdx].formType) ? `pink-button` : "gray-button"}/>
                         )}
+                        {isNotChoice && (
+                            <div className="font-bold text-xl my-10 text-center text-red animate-bounce">선택하고 다음 누르거라 이것들아 </div>
+                        )
+                        }
                     </>
                 )
                 }
@@ -77,7 +89,14 @@ const IdealBasicFormPage = () => {
                     <div className="flex">
                         {
                             nowIdx < BasicFormData.length - 1 ?
-                                <Button onClick={() => setNowIdx(nowIdx + 1)} className="mx-auto text-center">다음</Button>
+                                <Button onClick={() =>{
+                                    if(clickedValue===""){
+                                        setIsNotChoice(true);
+                                    }else{
+                                        setNowIdx(nowIdx+1);
+                                        setClickedValue("");
+                                    }
+                                } } className="mx-auto text-center">다음</Button>
                                 : <input type="submit" value="제출" className="mx-auto text-center"/>
                         }
                     </div>

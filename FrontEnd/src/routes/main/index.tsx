@@ -10,6 +10,7 @@ import IdealPick from "../../pages/idealPick/IdealPick.tsx";
 import Invite from "../../pages/invite/Invite.tsx";
 import React from 'react';
 import IdealGallery from "../../pages/gallery/IdealGallery.tsx";
+import ErrorPage from "../../pages/error/ErrorPage.tsx";
 
 function Index() {
     const validation = () => {
@@ -23,6 +24,7 @@ function Index() {
                 <Route path="/" element={<IdealMain/>}/>
                 <Route path="/invite" element={<Invite/>}/>
                 <Route path="/idealPick" element={<IdealPick/>}/>
+                <Route path="/error" element={<ErrorPage/>}/>
                 <Route path="/gallery" element={<IdealGallery/>}/>
                 {validation() && (
                 <React.Fragment>

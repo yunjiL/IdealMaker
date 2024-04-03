@@ -35,7 +35,11 @@ const IdealFormPage = () => {
         setIsLoading(true);
         postFormResultAPI(data, surveyId).then((response)=>{
             setIsLoading(false);
-            navigate("/result", {state: {idealId:response}});
+            if(response.isError){
+                navigate("/error");
+            }else {
+            navigate("/result", {state: {idealId:response.idealId}});
+            }
         });
 
     };
