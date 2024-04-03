@@ -11,6 +11,11 @@ export interface Answer {
     value: string;
 }
 
+export interface ImageResult{
+    isError: boolean;
+    idealId: number;
+}
+
 
 /* 이상형 설문조사 시작 */ 
 export interface Question{
