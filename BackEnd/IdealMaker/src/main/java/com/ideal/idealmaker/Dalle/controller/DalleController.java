@@ -72,9 +72,9 @@ public class DalleController {
 		try {
 			//사진 생성
 			String imageUrl = dalleService.makeDalleImage(prompt);
+			log.debug(">>>>>>" + characterId + " " + imageUrl);
 
 			//사진을 S3 서버에 저장
-			log.debug(">>>>>>" + characterId + " " + imageUrl);
 			FileInfoDto fileInfo = fileS3UploadService.uploadImageURL(Integer.toString(characterId), imageUrl);
 
 			//동물상 PK를 가져오기
@@ -98,14 +98,15 @@ public class DalleController {
 
 		//프롬프트 생성
 		String prompt = dalleService.makeCustomWoman(customWomanDto);
+		System.out.println(prompt);
 		log.info(">>>>>>" + prompt);
 
 		try {
 			//사진 생성
 			String imageUrl = dalleService.makeDalleImage(prompt);
+			log.debug(">>>>>>" + characterId + " " + imageUrl);
 
 			//사진을 S3 서버에 저장
-			log.debug(">>>>>>" + characterId + " " + imageUrl);
 			FileInfoDto fileInfo = fileS3UploadService.uploadImageURL(Integer.toString(characterId), imageUrl);
 
 			//동물상 PK를 가져오기
