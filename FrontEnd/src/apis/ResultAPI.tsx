@@ -45,7 +45,7 @@ export const postFormResultAPI = async (data: ConceptFormResult | CustomMan | Cu
             isError: false,
             idealId: response.data
         }
-
+        console.log(data)
         return result
     } catch (error) {
         const result: ImageResult = {
