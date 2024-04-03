@@ -40,12 +40,12 @@ export const postFormResultAPI = async (data: ConceptFormResult | CustomMan | Cu
         if (surveyType === "custom") {
             url += `/${data.genderId}`;
         }
+        console.log(data)
         const response = await axios.post(url, JSON.stringify(data));
         const result: ImageResult = {
             isError: false,
             idealId: response.data
         }
-        console.log(data)
         return result
     } catch (error) {
         const result: ImageResult = {
