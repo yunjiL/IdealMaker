@@ -47,6 +47,11 @@ const IdealPick = () => {
         } else {
             setExamples(examples)
         }
+        if(examples.length==1) {
+            setTimeout(() => {
+                celebration();
+            }, 1000);
+        }
     }, [isChoosing]);
 
     return (
@@ -64,7 +69,6 @@ const IdealPick = () => {
 
             <div className={"flex flex-col flex-grow"}>
             {examples.length == 1 ? (
-                celebration(),
                 <div className="w-full">
                     <IdealPickDiv pic={examples[0]?.idealURL} name={examples[0].animalType} show={false} side={'none'}/>
                 </div>
