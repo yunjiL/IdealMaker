@@ -1,6 +1,9 @@
 package com.ideal.idealmaker.ideal.domain;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+import org.springframework.data.annotation.CreatedDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -40,6 +43,7 @@ public class Ideal {
 
 	private Integer idealRank;
 
-	private LocalDate createdAt;
+	@CreatedDate
+	private LocalDateTime createdAt;
 
 }
