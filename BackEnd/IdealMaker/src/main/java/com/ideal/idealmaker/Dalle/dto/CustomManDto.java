@@ -8,6 +8,7 @@ import lombok.Getter;
 @Builder
 @Getter
 public class CustomManDto {
+
 	@JsonProperty("genderId")
 	private Integer genderId;
 

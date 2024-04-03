@@ -1,5 +1,7 @@
 package com.ideal.idealmaker.Dalle.service;
 
+import static com.ideal.idealmaker.exception.ExceptionMessage.*;
+
 import java.time.LocalDate;
 import java.util.Optional;
 
@@ -18,6 +20,7 @@ import com.ideal.idealmaker.Dalle.util.ConceptMapper;
 import com.ideal.idealmaker.Dalle.util.CustomManMapper;
 import com.ideal.idealmaker.Dalle.util.CustomWomanMapper;
 import com.ideal.idealmaker.Dalle.util.IdealMapper;
+import com.ideal.idealmaker.exception.IllegalException;
 import com.ideal.idealmaker.file.dto.FileInfoDto;
 import com.ideal.idealmaker.ideal.domain.AnimalType;
 import com.ideal.idealmaker.ideal.domain.Ideal;
@@ -71,9 +74,8 @@ public class DalleServiceImpl implements DalleService {
 	String size = "1792x1024";
 	String detail = "full-body portrait, wide shot so it's bright like a picture and 4K definition, and focus on the person, ultra realistic, details, sharp, focus, detailed skin,handsome korean, draw only one person";
 
-
-	@Description("컨셉 프롬프트 제작")
 	@Override
+	@Description("컨셉 프롬프트 제작")
 	public String makeConceptPrompt(ConceptDto conceptDto) {
 		//각 repository에서 prompt 내용 가져오기
 		String genderPrompt = genderRepository.getById(conceptDto.getGenderId()).getEng();
@@ -97,8 +99,8 @@ public class DalleServiceImpl implements DalleService {
 		return prompt;
 	}
 
-	@Description("커스텀 남자 프롬프트 제작")
 	@Override
+	@Description("커스텀 남자 프롬프트 제작")
 	public String makeCustomMan(CustomManDto customManDto) {
 		//각 repository에서 prompt 내용 가져오기
 		String genderPrompt = genderRepository.getById(customManDto.getGenderId()).getEng();
@@ -128,8 +130,9 @@ public class DalleServiceImpl implements DalleService {
 		return prompt;
 	}
 
-	@Description("커스텀 여자 프롬프트 제작")
+
 	@Override
+	@Description("커스텀 여자 프롬프트 제작")
 	public String makeCustomWoman(CustomWomanDto customWomanDto) {
 		//각 repository에서 prompt 내용 가져오기
 		String genderPrompt = genderRepository.getById(customWomanDto.getGenderId()).getEng();
@@ -163,8 +166,8 @@ public class DalleServiceImpl implements DalleService {
 		return prompt;
 	}
 
-	@Description("DTO 저장")
 	@Override
+	@Description("DTO 저장")
 	public Integer savePromptDTO(Object dto) {
 		IdealCharacter result;
 		if(dto instanceof ConceptDto){
@@ -176,25 +179,16 @@ public class DalleServiceImpl implements DalleService {
 		} else if (dto instanceof CustomWomanDto) {
 			result = idealCharacterRepository.save(customWomanMapper.CustomWomanDtoToEntity((CustomWomanDto)dto));
 			return result.getId();
+		} else {
+			throw new IllegalException(DTO_NOT_FOUND);
 		}
-		return null;
 	}
 
 	@Override
+	@Description("이상형 테이블에 characterId, animalTypeId, fildInfoDTO 저장")
 	public Long saveImage(Integer characterId,Long animalTypeId, FileInfoDto fileInfo) {
 		Ideal result = idealRepository.save(idealMapper.toEntity(characterId,animalTypeId, fileInfo.getFileURL()));
 		return result.getId();
-	}
-
-	@Override
-	@Transactional	//트랜잭션으로 가둬줘야 변경 감지 가능
-	public void updateAnimalType(Long animalFaceId) {
-
-		//DB에서 animalFaceId 값을 기준으로 데이터를 찾는다 (영속화)
-		Optional<AnimalType> animalType = animalTypeRepository.findById(animalFaceId);
-
-		//만약 해당 값이 존재한다면 전달받은 ChooseNum으로 set을 함
-		animalType.ifPresent(value -> {value.setChooseNum(value.getChooseNum() + 1);value.setUpdatedAt(LocalDate.now());});
 	}
 
 	@Description("달리 이미지 생성")
@@ -207,12 +201,26 @@ public class DalleServiceImpl implements DalleService {
 		request.setN(1);
 		request.setSize(size);
 
-		String imgUrl = extractFirstImageUrl(template.postForObject(url, request, DalleResponse.class));
-		if (imgUrl != null) {
+		try{
+			//이미지 URL 생성
+			String imgUrl = extractFirstImageUrl(template.postForObject(url, request, DalleResponse.class));
 			return imgUrl;
-		} else {
-			return null;
+		}catch (Exception e){
+			throw new IllegalException(URL_NOT_FOUND);
 		}
+
+	}
+
+	@Override
+	@Transactional	//트랜잭션으로 가둬줘야 변경 감지 가능
+	@Description("동물상 테이블 choose_num 업데이트")
+	public void updateAnimalType(Long animalFaceId) {
+
+		//DB에서 animalFaceId 값을 기준으로 데이터를 찾는다 (영속화)
+		Optional<AnimalType> animalType = animalTypeRepository.findById(animalFaceId);
+
+		//만약 해당 값이 존재한다면 전달받은 ChooseNum으로 set을 함
+		animalType.ifPresent(value -> {value.setChooseNum(value.getChooseNum() + 1);value.setUpdatedAt(LocalDate.now());});
 	}
 
 	@Description("이미지 url 추출")
@@ -221,8 +229,9 @@ public class DalleServiceImpl implements DalleService {
 		if (response != null && response.getData() != null && !response.getData().isEmpty()) {
 			Datum firstDatum = response.getData().get(0);
 			return firstDatum.getUrl();
+		}else {
+			throw new IllegalException(URL_NOT_FOUND);
 		}
-		return null;
 	}
 
 }
