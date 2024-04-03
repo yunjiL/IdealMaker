@@ -15,7 +15,7 @@ const ErrorPage = () => {
             <div>
                 <AnswerButton
                     questionText={"다시 만들러 가기"}
-                    onClick={() => {navigate("/IdealForm") }}
+                    onClick={() => {navigate("/") }}
                     style={"pink-button"}/>
             </div>
         </div>
