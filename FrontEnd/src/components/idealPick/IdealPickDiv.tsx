@@ -23,7 +23,7 @@ export const IdealPickDiv = ({pic, name, show, side}:PicProps) => {
         </div>
 
         <div className="flex justify-center mb-[5%]">
-            <p className="text-center text-[150%]">{name}</p>
+            <p className="text-center text-[150%] invisible">{name}</p>
         </div>
 
         {show ? (

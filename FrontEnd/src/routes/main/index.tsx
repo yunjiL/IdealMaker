@@ -23,13 +23,13 @@ function Index() {
                 <Route path="/" element={<IdealMain/>}/>
                 <Route path="/invite" element={<Invite/>}/>
                 <Route path="/idealPick" element={<IdealPick/>}/>
+                <Route path="/gallery" element={<IdealGallery/>}/>
                 {validation() && (
                 <React.Fragment>
                     <Route path="/loading" element={<Loading/>}/>
                     <Route path="/result" element={<IdealResult/>}/>
                     <Route path="/form" element={<IdealBasicFormPage/>}/>
                     <Route path="/IdealForm" element={<IdealForm />}/>
-                    <Route path="/gallery" element={<IdealGallery/>}/>
                 </React.Fragment>
                 )}
                 {/* 밑은 다른 주소로 접근 방지용 */}
