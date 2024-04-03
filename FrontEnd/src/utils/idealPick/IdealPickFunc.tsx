@@ -35,15 +35,15 @@ export const buttonBG = (side:string) => {
 export const animalPic = (animal:string) => {
     switch (animal) {
         case '토끼상':
-            return "src/assets/images/rabbit.webp"
+            return "https://i.imgur.com/6mm5G38.png"
         case '늑대상':
-            return "src/assets/images/wolf.webp"
+            return "https://i.imgur.com/qUZvhTx.png"
         case '강아지상':
-            return "src/assets/images/dog.webp"
+            return "https://i.imgur.com/JTQLicg.png"
         case '사슴상':
-            return "src/assets/images/deer.webp"
+            return "https://i.imgur.com/pOOYn58.png"
         case '고양이상':
-            return "src/assets/images/cat.webp"
+            return "https://i.imgur.com/aqCF9lv.png"
 
     }
 }
