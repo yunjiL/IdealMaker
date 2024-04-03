@@ -110,7 +110,7 @@ public class DalleServiceImpl implements DalleService {
 		String eyeStylePrompt = eyeStyleRepository.getById(customManDto.getSkinColorId()).getEng();
 		String pupilColorPrompt = customManDto.getPupilColor();
 		String backgroundPrompt = backgroundRepository.getById(customManDto.getBackgroundId()).getEng();
-		String clothPrompt = clothStyleRepository.getById(customManDto.getClothId()).getEng();
+		String clothPrompt = clothStyleRepository.getById(customManDto.getClothStyleId()).getEng();
 		String hairStylePrompt = hairStyleRepository.getById(customManDto.getHairStyleId()).getEng();
 		String hairColorPrompt = customManDto.getHairColor();
 
@@ -143,7 +143,7 @@ public class DalleServiceImpl implements DalleService {
 		String pupilColorPrompt = customWomanDto.getPupilColor();
 		String makeUpPrompt = makeUpRepository.getById(customWomanDto.getMakeUpId()).getEng();
 		String backgroundPrompt = backgroundRepository.getById(customWomanDto.getBackgroundId()).getEng();
-		String clothPrompt = clothStyleRepository.getById(customWomanDto.getClothId()).getEng();
+		String clothPrompt = clothStyleRepository.getById(customWomanDto.getClothStyleId()).getEng();
 		String hairStylePrompt = hairStyleRepository.getById(customWomanDto.getHairStyleId()).getEng();
 		String hairColorPrompt = customWomanDto.getHairColor();
 		String hairLengthPrompt = hairLengthRepository.getById(customWomanDto.getHairLengthId()).getEng();
@@ -185,7 +185,7 @@ public class DalleServiceImpl implements DalleService {
 	}
 
 	@Override
-	@Description("이상형 테이블에 characterId, animalTypeId, fildInfoDTO 저장")
+	@Description("이상형 테이블에 characterId, animalTypeId, findInfoDTO 저장")
 	public Long saveImage(Integer characterId,Long animalTypeId, FileInfoDto fileInfo) {
 		Ideal result = idealRepository.save(idealMapper.toEntity(characterId,animalTypeId, fileInfo.getFileURL()));
 		return result.getId();
