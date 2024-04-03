@@ -16,7 +16,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ideal.idealmaker.ideal.domain.AnimalType;
-import com.ideal.idealmaker.ranking.data.RankingResponseDto;
+import com.ideal.idealmaker.ranking.dto.RankingResponseDto;
+import com.ideal.idealmaker.ranking.mapper.RankingMapper;
 import com.ideal.idealmaker.ranking.repository.RankingRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -62,7 +63,7 @@ public class RankingService {
 		}else{	// 데이터가 존재하면
 			// animalType entity를 DTO로 변환
 			for (AnimalType animalType : rankingEntity) {
-				RankingResponseDto dto = RankingResponseDto.from(animalType);
+				RankingResponseDto dto = RankingMapper.toDto(animalType);
 				rankingList.add(dto);
 			}
 			for (RankingResponseDto rankingResponseDto : rankingList) {

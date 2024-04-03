@@ -1,7 +1,7 @@
 package com.ideal.idealmaker.gallery.service;
 
-import com.ideal.idealmaker.gallery.util.ImageMapper;
-import com.ideal.idealmaker.gallery.dto.ImageDTO;
+import com.ideal.idealmaker.gallery.mapper.ImageMapper;
+import com.ideal.idealmaker.gallery.dto.ImageDto;
 import com.ideal.idealmaker.gallery.repository.ImageRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +20,7 @@ public class ImageServiceImpl implements ImageService {
     //전체 조회
     @Override
     @Transactional(readOnly = true)
-    public Page<ImageDTO> findAllImages(Pageable pageable) {
+    public Page<ImageDto> findAllImages(Pageable pageable) {
         return imageRepository.findAll(pageable)
                 .map(imageMapper::toImageDTO);
     }
@@ -28,7 +28,7 @@ public class ImageServiceImpl implements ImageService {
     //상세 조회
     @Override
     @Transactional(readOnly = true)
-    public ImageDTO findImageById(Long idealId) {
+    public ImageDto findImageById(Long idealId) {
         return imageRepository.findById(idealId)
                 .map(imageMapper::toImageDTO)
                 .orElseThrow(() -> new EntityNotFoundException("Entity not found")); // 예외 처리 변경
@@ -37,7 +37,7 @@ public class ImageServiceImpl implements ImageService {
     //동물상 필터링 조회
     @Override
     @Transactional(readOnly = true)
-    public Page<ImageDTO> findByAnimalType(String animalType, Pageable pageable) {
+    public Page<ImageDto> findByAnimalType(String animalType, Pageable pageable) {
         return imageRepository.findByAnimalType(animalType, pageable)
                 .map(imageMapper::toImageDTO);
     }
@@ -45,7 +45,7 @@ public class ImageServiceImpl implements ImageService {
     //성별 필터링 조회
     @Override
     @Transactional(readOnly = true)
-    public Page<ImageDTO> findByGenderId(Integer genderId, Pageable pageable) {
+    public Page<ImageDto> findByGenderId(Integer genderId, Pageable pageable) {
         return imageRepository.findByGenderId(genderId, pageable)
                 .map(imageMapper::toImageDTO);
     }

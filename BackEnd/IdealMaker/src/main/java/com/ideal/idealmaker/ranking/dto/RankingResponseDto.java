@@ -1,4 +1,4 @@
-package com.ideal.idealmaker.ranking.data;
+package com.ideal.idealmaker.ranking.dto;
 
 import com.ideal.idealmaker.ideal.domain.AnimalType;
 
@@ -20,12 +20,4 @@ public class RankingResponseDto {
 
 	private int chooseNum;
 
-
-	public static RankingResponseDto from(AnimalType animalType){
-		return RankingResponseDto.builder()
-			.animalType(animalType.getType())
-			.animalImage(animalType.getTypeURL())
-			.chooseNum(animalType.getChooseNum())
-			.build();
-	}
 }

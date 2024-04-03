@@ -1,4 +1,4 @@
-package com.ideal.idealmaker.worldcup.dto;
+package com.ideal.idealmaker.gallery.dto;
 
 import lombok.*;
 @Data
@@ -7,7 +7,7 @@ import lombok.*;
 @Builder
 @Getter
 @Setter
-public class WorldcupDTO {
+public class ImageDto {
     private Long idealId;
     private String idealURL;
     private String animalType; //동물상
