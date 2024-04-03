@@ -18,6 +18,7 @@ const IdealPick = () => {
         setNewExamples(shuffled.slice(0, 2));
     }
     const Choose = (side: 'left' | 'right') => {
+        if(isChoosing) return;
         setSelected(side);
         setIsChoosing(true);
 
