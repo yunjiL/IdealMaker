@@ -1,6 +1,6 @@
 package com.ideal.idealmaker.worldcup.service;
 
-import com.ideal.idealmaker.worldcup.dto.WorldcupDTO;
+import com.ideal.idealmaker.worldcup.dto.WorldcupDto;
 import com.ideal.idealmaker.worldcup.repository.WorldcupRepository;
 import org.springframework.stereotype.Service;
 import java.util.Collections;
@@ -17,11 +17,11 @@ public class WorldcupServiceImpl implements WorldcupService {
     }
 
     @Override
-    public List<WorldcupDTO> getRandomIdealsByGender(Integer genderId) {
+    public List<WorldcupDto> getRandomIdealsByGender(Integer genderId) {
         // 모든 후보를 조회
-        List<WorldcupDTO> allIdeals = worldcupRepository.findAll().stream()
+        List<WorldcupDto> allIdeals = worldcupRepository.findAll().stream()
                 .filter(ideal -> ideal.getIdealCharacter().getGender().getId().equals(genderId))
-                .map(ideal -> WorldcupDTO.builder()
+                .map(ideal -> WorldcupDto.builder()
                         .idealId(ideal.getId())
                         .idealURL(ideal.getIdealURL())
                         .animalType(ideal.getAnimalType().getType())

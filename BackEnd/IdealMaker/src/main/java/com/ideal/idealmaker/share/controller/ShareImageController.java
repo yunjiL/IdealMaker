@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ideal.idealmaker.share.data.ShareImageDto;
+import com.ideal.idealmaker.share.dto.ShareImageDto;
 import com.ideal.idealmaker.share.service.ShareImageService;
 
 import lombok.RequiredArgsConstructor;

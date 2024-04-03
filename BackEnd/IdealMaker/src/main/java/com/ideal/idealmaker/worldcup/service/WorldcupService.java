@@ -1,8 +1,8 @@
 package com.ideal.idealmaker.worldcup.service;
 
-import com.ideal.idealmaker.worldcup.dto.WorldcupDTO;
+import com.ideal.idealmaker.worldcup.dto.WorldcupDto;
 import java.util.List;
 
 public interface WorldcupService {
-    List<WorldcupDTO> getRandomIdealsByGender(Integer genderId);
+    List<WorldcupDto> getRandomIdealsByGender(Integer genderId);
 }

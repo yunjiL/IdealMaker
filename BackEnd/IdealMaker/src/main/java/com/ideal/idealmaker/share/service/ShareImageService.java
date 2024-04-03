@@ -4,7 +4,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ideal.idealmaker.ideal.domain.Ideal;
-import com.ideal.idealmaker.share.data.ShareImageDto;
+import com.ideal.idealmaker.share.dto.ShareImageDto;
+import com.ideal.idealmaker.share.mapper.ShareImageMapper;
 import com.ideal.idealmaker.share.repository.ShareImageRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -29,7 +30,7 @@ public class ShareImageService {
 
 		Ideal idealEntity = shareImageRepository.findIdealById(id);
 
-		ShareImageDto shareImageDto = ShareImageDto.from(idealEntity);
+		ShareImageDto shareImageDto = ShareImageMapper.toDto(idealEntity);
 
 		return shareImageDto;
 	}

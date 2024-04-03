@@ -1,8 +1,6 @@
-package com.ideal.idealmaker.share.data;
+package com.ideal.idealmaker.share.dto;
 
-import com.ideal.idealmaker.ideal.domain.AnimalType;
 import com.ideal.idealmaker.ideal.domain.Ideal;
-import com.ideal.idealmaker.ranking.data.RankingResponseDto;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -16,9 +14,5 @@ import lombok.NoArgsConstructor;
 @Getter
 public class ShareImageDto {
 	private String idealURL;
-
-	public static ShareImageDto from(Ideal ideal){
-		return ShareImageDto.builder().idealURL(ideal.getIdealURL()).build();
-	}
 
 }
